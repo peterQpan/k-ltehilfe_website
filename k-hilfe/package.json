@@ -1,0 +1,13 @@
+{
+  "name": "k-hilfe",
+  "version": "1.0.0",
+  "description": "Kältehilfe Website",
+  "main": "",
+  "scripts": {
+    "test": "echo \"No tests specified\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs"
+}

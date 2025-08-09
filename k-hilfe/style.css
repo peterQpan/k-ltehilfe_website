@@ -1,0 +1,73 @@
+:root {
+  --color-red: #e50510;
+  --color-teal: #1ca1a0;
+  --color-yellow: #feae01;
+  --color-blue: #0788cc;
+  --color-pink: #e1156c;
+  --color-green: #98c021;
+  --color-dark: #333;
+  --color-light: #fff;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--color-dark);
+  background: var(--color-light);
+}
+
+header {
+  background: var(--color-red);
+  color: var(--color-light);
+}
+
+.navbar-brand span {
+  font-weight: bold;
+  color: var(--color-light);
+}
+
+section {
+  padding: 4rem 0;
+}
+
+.hero {
+  background: var(--color-teal);
+  color: var(--color-light);
+  text-align: center;
+  padding: 6rem 1rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  background: var(--color-yellow);
+  border: none;
+  color: var(--color-dark);
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+footer {
+  background: var(--color-red);
+  color: var(--color-light);
+  padding: 2rem 0;
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  color: var(--color-light);
+  margin-right: 0.5rem;
+}
+
+/* subtle feed positioning */
+.instagram-feed {
+  max-width: 320px;
+  margin: 0 auto;
+}
