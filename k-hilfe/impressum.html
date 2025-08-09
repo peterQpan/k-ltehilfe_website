@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum - Kältehilfe</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <div class="container">
+            <div class="lang-links">
+                <a href="#" onclick="changeLanguage('de')" class="lang-link active" data-lang="de">DE</a>
+                <a href="#" onclick="changeLanguage('en')" class="lang-link" data-lang="en">EN</a>
+                <a href="#" onclick="changeLanguage('tr')" class="lang-link" data-lang="tr">TR</a>
+                <a href="#" onclick="changeLanguage('it')" class="lang-link" data-lang="it">IT</a>
+                <a href="#" onclick="changeLanguage('es')" class="lang-link" data-lang="es">ES</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="images/logo.svg" alt="Kältehilfe Logo" class="logo">
+                <span class="brand-text" data-key="brandName">Kältehilfe</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link" data-key="navHome">Startseite</a>
+                <a href="index.html#about" class="nav-link" data-key="navAbout">Über uns</a>
+                <a href="index.html#help" class="nav-link" data-key="navHelp">Helfen</a>
+                <a href="index.html#contact" class="nav-link" data-key="navContact">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main style="padding: 2rem 0; min-height: 60vh;">
+        <div class="container">
+            <h1 data-key="imprintTitle">Impressum</h1>
+            
+            <div style="max-width: 800px;">
+                <h2 data-key="imprintContactTitle">Angaben gemäß § 5 TMG</h2>
+                <div data-key="imprintContactInfo">
+                    <p><strong>Kältehilfe e.V.</strong><br>
+                    Musterstraße 123<br>
+                    12345 Musterstadt<br>
+                    Deutschland</p>
+                    
+                    <p><strong>Vertreten durch:</strong><br>
+                    Max Mustermann (1. Vorsitzender)<br>
+                    Maria Musterfrau (2. Vorsitzende)</p>
+                </div>
+
+                <h2 data-key="imprintContactDataTitle">Kontakt</h2>
+                <div data-key="imprintContactData">
+                    <p>Telefon: +49 123 4567890<br>
+                    E-Mail: info@kaeltehilfe.example</p>
+                </div>
+
+                <h2 data-key="imprintRegisterTitle">Registereintrag</h2>
+                <div data-key="imprintRegisterInfo">
+                    <p>Eintragung im Vereinsregister.<br>
+                    Registergericht: Amtsgericht Musterstadt<br>
+                    Registernummer: VR 12345</p>
+                </div>
+
+                <h2 data-key="imprintTaxTitle">Umsatzsteuer-ID</h2>
+                <div data-key="imprintTaxInfo">
+                    <p>Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz:<br>
+                    DE123456789</p>
+                </div>
+
+                <h2 data-key="imprintResponsibilityTitle">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+                <div data-key="imprintResponsibilityInfo">
+                    <p>Max Mustermann<br>
+                    Musterstraße 123<br>
+                    12345 Musterstadt</p>
+                </div>
+
+                <h2 data-key="imprintDisclaimerTitle">Haftungsausschluss</h2>
+                <div data-key="imprintDisclaimerText">
+                    <h3>Haftung für Inhalte</h3>
+                    <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht unter der Verpflichtung, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+
+                    <h3>Haftung für Links</h3>
+                    <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+
+                    <h3>Urheberrecht</h3>
+                    <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 Kältehilfe. <span data-key="footerRights">Alle Rechte vorbehalten.</span></p>
+                <div class="footer-legal">
+                    <a href="impressum.html" data-key="footerImprint">Impressum</a>
+                    <a href="datenschutz.html" data-key="footerPrivacy">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

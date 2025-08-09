@@ -1,0 +1,49 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#4a90e2" stroke="#2c3e50" stroke-width="3"/>
+  
+  <!-- Snowflake design -->
+  <g transform="translate(100, 100)" fill="white" stroke="white" stroke-width="2">
+    <!-- Main cross -->
+    <line x1="-30" y1="0" x2="30" y2="0"/>
+    <line x1="0" y1="-30" x2="0" y2="30"/>
+    
+    <!-- Diagonal lines -->
+    <line x1="-21" y1="-21" x2="21" y2="21"/>
+    <line x1="-21" y1="21" x2="21" y2="-21"/>
+    
+    <!-- Small branches -->
+    <g stroke-width="1.5">
+      <!-- Top branches -->
+      <line x1="0" y1="-30" x2="-8" y2="-22"/>
+      <line x1="0" y1="-30" x2="8" y2="-22"/>
+      
+      <!-- Bottom branches -->
+      <line x1="0" y1="30" x2="-8" y2="22"/>
+      <line x1="0" y1="30" x2="8" y2="22"/>
+      
+      <!-- Left branches -->
+      <line x1="-30" y1="0" x2="-22" y2="-8"/>
+      <line x1="-30" y1="0" x2="-22" y2="8"/>
+      
+      <!-- Right branches -->
+      <line x1="30" y1="0" x2="22" y2="-8"/>
+      <line x1="30" y1="0" x2="22" y2="8"/>
+    </g>
+  </g>
+  
+  <!-- Heart symbol in center -->
+  <g transform="translate(100, 100)">
+    <path d="M0,5 C0,5 -10,-5 -10,-12 C-10,-18 -5,-20 0,-15 C5,-20 10,-18 10,-12 C10,-5 0,5 0,5 Z" fill="#ff8c42"/>
+  </g>
+  
+  <!-- Text around the circle -->
+  <defs>
+    <path id="circle-path" d="M 100, 100 m -80, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0"/>
+  </defs>
+  <text font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">
+    <textPath href="#circle-path" startOffset="25%">
+      KÄLTEHILFE • COLD AID
+    </textPath>
+  </text>
+</svg>

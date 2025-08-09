@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kältehilfe - Gemeinsam gegen die Kälte</title>
+    <meta name="description" content="Kältehilfe unterstützt obdachlose Menschen mit warmen Mahlzeiten, Notunterkünften und Hilfsgütern. Jede Hilfe zählt.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <div class="container">
+            <div class="lang-links">
+                <a href="#" onclick="changeLanguage('de')" class="lang-link active" data-lang="de">DE</a>
+                <a href="#" onclick="changeLanguage('en')" class="lang-link" data-lang="en">EN</a>
+                <a href="#" onclick="changeLanguage('tr')" class="lang-link" data-lang="tr">TR</a>
+                <a href="#" onclick="changeLanguage('it')" class="lang-link" data-lang="it">IT</a>
+                <a href="#" onclick="changeLanguage('es')" class="lang-link" data-lang="es">ES</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="images/logo.svg" alt="Kältehilfe Logo" class="logo">
+                <span class="brand-text" data-key="brandName">Kältehilfe</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link" data-key="navHome">Startseite</a>
+                <a href="#about" class="nav-link" data-key="navAbout">Über uns</a>
+                <a href="#help" class="nav-link" data-key="navHelp">Helfen</a>
+                <a href="#gallery" class="nav-link" data-key="navGallery">Galerie</a>
+                <a href="#contact" class="nav-link" data-key="navContact">Kontakt</a>
+                <a href="#" class="nav-link donate-btn" data-key="navDonate">Spenden</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-key="heroTitle">Gemeinsam gegen die Kälte</h1>
+                <p class="hero-subtitle" data-key="heroSubtitle">Wir unterstützen obdachlose Menschen mit warmen Mahlzeiten, Notunterkünften und lebenswichtigen Hilfsgütern während der kalten Jahreszeit.</p>
+                <div class="hero-buttons">
+                    <a href="#help" class="btn btn-primary" data-key="heroButton1">Jetzt helfen</a>
+                    <a href="#about" class="btn btn-secondary" data-key="heroButton2">Mehr erfahren</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label" data-key="stat1">Menschen geholfen</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label" data-key="stat2">Warme Mahlzeiten</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label" data-key="stat3">Freiwillige Helfer</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label" data-key="stat4">Notfallhilfe</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-key="aboutTitle">Über die Kältehilfe</h2>
+                <p class="section-subtitle" data-key="aboutSubtitle">Unsere Mission ist es, eine Brücke zu bauen zwischen denen, die Hilfe benötigen, und denen, die helfen können.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 data-key="aboutMissionTitle">Unsere Mission</h3>
+                    <p data-key="aboutMissionText">Die Kältehilfe ist eine gemeinnützige Initiative, die sich dem Schutz und der Unterstützung von obdachlosen Menschen während der kalten Jahreszeit widmet. Wir setzen uns dafür ein, dass niemand in der Kälte erfrieren muss.</p>
+                    
+                    <h3 data-key="aboutServicesTitle">Was wir tun</h3>
+                    <ul class="services-list">
+                        <li data-key="service1"><i class="fas fa-home"></i> Notunterkünfte bereitstellen</li>
+                        <li data-key="service2"><i class="fas fa-utensils"></i> Warme Mahlzeiten ausgeben</li>
+                        <li data-key="service3"><i class="fas fa-tshirt"></i> Hilfsgüter verteilen</li>
+                        <li data-key="service4"><i class="fas fa-hand-holding-heart"></i> Streetwork leisten</li>
+                        <li data-key="service5"><i class="fas fa-comments"></i> Beratung anbieten</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="images/about-us.svg" alt="Kältehilfe Team" class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Help Section -->
+    <section id="help" class="help">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-key="helpTitle">So können Sie helfen</h2>
+                <p class="section-subtitle" data-key="helpSubtitle">Jede Hilfe zählt - ob durch Spenden, Zeit oder Aufmerksamkeit.</p>
+            </div>
+            <div class="help-grid">
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="fas fa-euro-sign"></i>
+                    </div>
+                    <h3 data-key="helpDonateTitle">Geld spenden</h3>
+                    <p data-key="helpDonateText">Ihre finanzielle Unterstützung ermöglicht es uns, Unterkünfte, Verpflegung und Hilfsgüter bereitzustellen.</p>
+                    <div class="bank-info">
+                        <p><strong>IBAN:</strong> DE00 0000 0000 0000 0000 00</p>
+                        <p><strong data-key="bankPurpose">Verwendungszweck:</strong> Spende Kältehilfe</p>
+                    </div>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3 data-key="helpGoodsTitle">Sachspenden</h3>
+                    <p data-key="helpGoodsText">Warme Kleidung, Schlafsäcke und haltbare Lebensmittel werden dringend benötigt.</p>
+                    <ul class="goods-list">
+                        <li data-key="goods1">Warme Kleidung</li>
+                        <li data-key="goods2">Schlafsäcke</li>
+                        <li data-key="goods3">Hygieneartikel</li>
+                        <li data-key="goods4">Haltbare Lebensmittel</li>
+                    </ul>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 data-key="helpVolunteerTitle">Zeit spenden</h3>
+                    <p data-key="helpVolunteerText">Werden Sie ehrenamtlicher Helfer bei Essensausgaben, Streetwork oder in der Verwaltung.</p>
+                    <a href="#contact" class="btn btn-outline" data-key="volunteerButton">Freiwillig helfen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-key="galleryTitle">Unsere Arbeit</h2>
+                <p class="section-subtitle" data-key="gallerySubtitle">Einblicke in unsere tägliche Hilfsarbeit</p>
+            </div>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery items will be loaded here -->
+            </div>
+            <div class="social-feed">
+                <h3 data-key="socialFeedTitle">Folgen Sie uns</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/kaeltehilfe" target="_blank" class="social-link facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://instagram.com/kaeltehilfe" target="_blank" class="social-link instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-key="contactTitle">Kontakt</h2>
+                <p class="section-subtitle" data-key="contactSubtitle">Nehmen Sie Kontakt mit uns auf</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4 data-key="contactPhoneTitle">Telefon</h4>
+                            <a href="tel:+491234567890">+49 123 4567890</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4 data-key="contactEmailTitle">E-Mail</h4>
+                            <a href="mailto:info@kaeltehilfe.example">info@kaeltehilfe.example</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4 data-key="contactAddressTitle">Adresse</h4>
+                            <p data-key="contactAddressText">Musterstraße 123<br>12345 Musterstadt</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="mailto:info@kaeltehilfe.example" method="post" enctype="text/plain">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="" required data-placeholder="contactFormName">
+                            <label data-key="contactFormName">Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="" required data-placeholder="contactFormEmail">
+                            <label data-key="contactFormEmail">E-Mail</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" rows="5" placeholder="" required data-placeholder="contactFormMessage"></textarea>
+                            <label data-key="contactFormMessage">Nachricht</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-key="contactFormSubmit">Nachricht senden</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="images/logo.svg" alt="Kältehilfe Logo" class="footer-logo">
+                        <span class="footer-brand-text" data-key="brandName">Kältehilfe</span>
+                    </div>
+                    <p class="footer-description" data-key="footerDescription">Gemeinsam gegen die Kälte - Hilfe für obdachlose Menschen.</p>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/kaeltehilfe" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com/kaeltehilfe" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 data-key="footerQuickLinks">Schnellzugriff</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home" data-key="navHome">Startseite</a></li>
+                        <li><a href="#about" data-key="navAbout">Über uns</a></li>
+                        <li><a href="#help" data-key="navHelp">Helfen</a></li>
+                        <li><a href="#contact" data-key="navContact">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-key="footerContact">Kontakt</h4>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> +49 123 4567890</p>
+                        <p><i class="fas fa-envelope"></i> info@kaeltehilfe.example</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Kältehilfe. <span data-key="footerRights">Alle Rechte vorbehalten.</span></p>
+                <div class="footer-legal">
+                    <a href="impressum.html" data-key="footerImprint">Impressum</a>
+                    <a href="datenschutz.html" data-key="footerPrivacy">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

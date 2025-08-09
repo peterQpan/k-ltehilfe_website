@@ -1,0 +1,359 @@
+/* Responsive Design */
+
+/* Large screens */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 100%;
+        padding: 0 var(--spacing-md);
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    /* Navigation */
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: var(--white);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        transition: left 0.3s ease;
+        box-shadow: var(--shadow-lg);
+        padding-top: var(--spacing-lg);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-toggle.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .nav-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Hero */
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.125rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 200px;
+    }
+
+    /* About Section */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .about-image {
+        order: -1;
+    }
+
+    /* Help Section */
+    .help-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Contact Section */
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Stats */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Language selector */
+    .lang-links {
+        justify-content: center;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    /* Typography adjustments */
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    /* Spacing adjustments */
+    section {
+        padding: var(--spacing-md) 0;
+    }
+
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    /* Navigation brand */
+    .nav-brand {
+        font-size: 1.25rem;
+    }
+
+    .logo {
+        height: 30px;
+    }
+
+    /* Stats grid */
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    /* Help cards */
+    .help-card {
+        padding: var(--spacing-md);
+    }
+
+    /* Gallery */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Social links */
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Contact form */
+    .contact-form {
+        padding: var(--spacing-md);
+    }
+
+    /* Footer */
+    .footer-social {
+        justify-content: center;
+    }
+
+    /* Language selector */
+    .lang-links {
+        flex-wrap: wrap;
+        gap: var(--spacing-xs);
+    }
+
+    .lang-link {
+        font-size: 12px;
+        padding: 2px 6px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 320px) {
+    .hero-title {
+        font-size: 1.75rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .help-card {
+        padding: var(--spacing-sm);
+    }
+
+    .contact-form {
+        padding: var(--spacing-sm);
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .language-selector,
+    .hero-buttons,
+    .nav-toggle,
+    .social-links,
+    .footer-social {
+        display: none;
+    }
+
+    .hero {
+        background: var(--white);
+        color: var(--dark-gray);
+        min-height: auto;
+        padding: var(--spacing-md) 0;
+    }
+
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+
+    .section-title {
+        font-size: 18pt;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-blue: #0066cc;
+        --warm-orange: #cc6600;
+        --dark-gray: #000000;
+        --light-gray: #f0f0f0;
+    }
+
+    .btn {
+        border-width: 3px;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus {
+        outline: 2px solid var(--primary-blue);
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --white: #1a1a1a;
+        --light-gray: #2a2a2a;
+        --dark-gray: #e0e0e0;
+    }
+
+    body {
+        background-color: var(--white);
+        color: var(--dark-gray);
+    }
+
+    .navbar {
+        background-color: #2a2a2a;
+    }
+
+    .help-card,
+    .stat-item,
+    .contact-form {
+        background-color: #2a2a2a;
+        border: 1px solid #404040;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        background-color: #2a2a2a;
+        border-color: #404040;
+        color: var(--dark-gray);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: var(--primary-blue);
+    }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: 60vh;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .nav-menu {
+        height: calc(100vh - 60px);
+        padding-top: var(--spacing-md);
+    }
+}
+
+/* Focus styles for accessibility */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+
+/* Ensure minimum touch target size on mobile */
+@media (max-width: 768px) {
+    .btn,
+    .nav-link,
+    .social-icon,
+    .lang-link {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-link {
+        padding: 12px var(--spacing-sm);
+        margin: 4px 0;
+    }
+}
