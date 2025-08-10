@@ -1,29 +1,37 @@
-# Pflege der Webseite
-
-Diese Anleitung beschreibt, wie die angepasste Version des Templates betrieben und aktualisiert wird.
+# Pflegeanleitung
 
 ## Hosting
-1. Das Verzeichnis `give_hope` auf einen Webserver oder Dienst wie GitHub Pages bzw. Netlify hochladen.
-2. Die `index.html` ist die Startseite. Alle Dateien müssen im gleichen Verzeichnis bleiben, damit relative Pfade funktionieren.
-3. Für einen lokalen Test kann im Ordner `give_hope` `python -m http.server` ausgeführt und danach `http://localhost:8000` im Browser geöffnet werden.
-
-## Logo und Farben
-- Das Vereinslogo befindet sich im Projektstamm unter `kh2000.jpeg`. Es wird in der Navigationsleiste mit einem relativen Pfad (`../kh2000.jpeg`) eingebunden. Soll ein anderes Logo verwendet werden, das bestehende Bild ersetzen oder den Pfad in den HTML-Dateien anpassen.
-- Die Farben des Vereins werden in `css/style.css` als Variablen `--primary-color`, `--secondary-color` und `--accent-color` definiert. Änderungen an diesen Variablen passen das Farbschema der gesamten Seite an.
+- Lege den Inhalt des Ordners `give_hope` auf einen Webserver oder nutze einen einfachen Entwicklungsserver:
+  ```bash
+  cd give_hope
+  python -m http.server
+  ```
+- Öffne anschließend `http://localhost:8000` im Browser.
+- Achte darauf, dass sich die Datei `kh2000.jpeg` eine Ebene oberhalb des Ordners befindet oder passe den Pfad im Navbar-Logo an.
 
 ## Bilder austauschen
-- Alle aktuellen Bilder liegen im Unterordner `images`. Neue Bilder können dort abgelegt und in den HTML-Dateien referenziert werden.
-- Es sollten nur Web‑Formate wie `.jpg` oder `.png` verwendet werden. Beim Austausch eines Bildes kann der Dateiname beibehalten oder in den entsprechenden `src`‑Attributen geändert werden.
+- Bilder liegen im Verzeichnis `images/` bzw. als Logo `kh2000.jpeg` im Projektwurzelverzeichnis.
+- Ersetze eine Bilddatei durch eine neue Datei mit gleichem Namen oder aktualisiere den Pfad in den HTML-Dateien.
+- Füge neue Bilder nicht per Pull Request hinzu, sondern lade sie direkt auf dem Server hoch.
 
-## Beiträge und Inhalte ändern
-- Startseitentexte befinden sich in `index.html`.
-- Die Seite `about.html` enthält Vereinsinformationen und Teamvorstellung.
-- Blogbeiträge werden in `blog.html` (Übersicht) und `blog-single.html` (Einzelbeitrag) gepflegt. Für einen neuen Beitrag die Struktur einer bestehenden Karte kopieren und Inhalte sowie Bildpfade anpassen.
-- Kontaktinformationen stehen in `contact.html`.
+## Beiträge ändern und hinzufügen
+- Blog-Übersicht: `blog.html`
+- Einzelner Beitrag: `blog-single.html`
+- Kopiere einen bestehenden `<div class="post-entry">` Block in `blog.html`, passe Titel, Bild und Link an.
+- Für neue Beiträge dupliziere `blog-single.html` und verlinke ihn entsprechend.
 
-## Social Media
-- Links zu Facebook und Instagram befinden sich im Footer der HTML-Dateien. Zum Ändern der Adressen die URLs dort anpassen.
+## Texte und Farben
+- Allgemeine Texte befinden sich in den HTML-Dateien im Ordner `give_hope`.
+- Die Vereinsfarben sind am Anfang der Datei `css/style.css` als CSS-Variablen definiert:
+  ```css
+  :root {
+    --primary-color: #1ca1a0;
+    --secondary-color: #0788cc;
+    --accent-color: #feae01;
+  }
+  ```
+- Passe bei Bedarf diese Werte an, um das Farbschema zu ändern.
 
-## Weitere Hinweise
-- Es werden ausschließlich Online-Schriften verwendet, daher sind keine Schriftdateien erforderlich.
-- Nach Änderungen sollte die Seite erneut lokal getestet werden, um Darstellungsfehler zu vermeiden.
+## Soziale Medien
+- Die Links zu Facebook und Instagram stehen im Footer jedes HTML-Dokuments.
+- Aktualisiere sie bei Änderungen der Accounts.
