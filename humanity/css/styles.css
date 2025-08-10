@@ -14,6 +14,11 @@ License URI:http://www.gnu.org/licenses/gpl-2.0.html
 @import url(http://fonts.googleapis.com/css?family=Allerta+Stencil);
 @import url(http://fonts.googleapis.com/css?family=Raleway:300);
 
+:root {
+  --primary-color: #e50510;
+  --secondary-color: #1ca1a0;
+  --accent-color: #feae01;
+}
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 /******* General ******/
 /*-------------------------------------------------------------------------------------------------------------------------------*/
@@ -27,31 +32,28 @@ divider {
 	background: url(../images/divider.jpg) no-repeat fixed center;
 }
 .header-text {
-	position: relative;
-	top: 29%;
-	font-size: 35px;
-<<<<<<< HEAD
-	text-align: center;
-	margin-bottom: 40px;
-=======
->>>>>>> origin/gh-pages
+        position: relative;
+        top: 29%;
+        font-size: 35px;
+        text-align: center;
+        margin-bottom: 40px;
 }
 .connect-text{
-	margin-top: 50px;
+        margin-top: 50px;
 }
 
 .header-text span {
-	font-family: 'Allerta Stencil', sans-serif;
-	padding: 8px;
-	font-weight: bold;
-	border-bottom: 2px solid;
+        font-family: 'Allerta Stencil', sans-serif;
+        padding: 8px;
+        font-weight: bold;
+        border-bottom: 2px solid var(--accent-color);
 }
 body {
-	background: rgba(153, 211, 213, 0.32);
-	margin: 0px;
-	padding: 0px;
-	font-family: 'Varela Round', sans-serif;
-	color: #354b5e;
+        background: #fff;
+        margin: 0px;
+        padding: 0px;
+        font-family: 'Varela Round', sans-serif;
+        color: #354b5e;
 }
 
 
@@ -209,28 +211,33 @@ p.text-center.sub-text {
 	cursor: pointer;
 }
 .social-share  .fa:hover{
-	cursor:pointer;
-	color: white;
-	background: #2494A0;
-	transition:.3s;
+        cursor:pointer;
+        color: white;
+        background: var(--secondary-color);
+        transition:.3s;
 }
 .fa-2x{
-	padding-right: 20px;
+        padding-right: 20px;
 }
 .navbar-toggle .icon-bar {
-	background-color: #000 !important;
+        background-color: #000 !important;
 }
-
+.navbar {
+        background: var(--primary-color);
+}
 ul.nav.navbar-nav li a{
-	color:#2494A0;
-	text-transform: uppercase;
-	font-weight: bold;
-	font-size: 15px;
+        color:#fff;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 15px;
+}
+ul.nav.navbar-nav li a:hover{
+        color: var(--accent-color);
 }
 .logo {
-	position: relative;
-	top: -47px;
-	left: 5px;
+        position: relative;
+        top: -47px;
+        left: 5px;
 	border-bottom: none;
 }
 @media (max-width: 768px){
@@ -301,7 +308,7 @@ ul.nav.navbar-nav li a{
 .btn-block {
 	margin-right: 10px;
 	padding: 12px 37px;
-	background: #68ABBB;
+	background: #1ca1a0;
 	margin-bottom: 10px;
 }
 .form-control {
@@ -313,7 +320,7 @@ ul.nav.navbar-nav li a{
 }
 .btn-tertiary{
 	padding: 12px 37px;
-	background: #68ABBB;
+	background: #1ca1a0;
 	color: white;
 }
 
@@ -379,7 +386,7 @@ ul.nav.navbar-nav li a{
 		margin:0;
 		z-index: 3;
 		opacity:0.9;
-		background: #68ABBB;
+		background: #1ca1a0;
 		-webkit-transition: all 0.4s;
 		-moz-transition: all 0.4s;
 		transition: all 0.4s;
@@ -453,7 +460,7 @@ ul.nav.navbar-nav li a{
 @media (max-width:991px){
     .bx-wrapper .bx-controls-direction a{
         position: static !important;
-        background: #68ABBB;
+        background: #1ca1a0;
         color: white;
         padding: 10px;
         text-decoration: none;
@@ -499,7 +506,7 @@ padding: 5px;
 .service-features .img-container {
 	padding: 50px 45px;
 	border-radius: 3px;
-	background: #6799A0;
+	background: #1ca1a0;
 	/* width: 120px; */
 	margin: 0 auto;
 	position: relative;
@@ -513,7 +520,7 @@ padding: 5px;
 	position: absolute;
 	width: 0;
 	height: 0;
-	border: 15px solid #6799A0;
+	border: 15px solid #1ca1a0;
 	border-bottom: 0px solid transparent !important;
 	border-right: 20px solid transparent !important;
 	border-left: 20px solid transparent !important;
@@ -596,7 +603,7 @@ section.blog {
 	position: absolute;
 	top: 20px;
 	left: 20px;
-	background: #41657C;
+	background: #e50510;
 	height: 30px;
 	padding: 4px 11px;
 	z-index: 8;
@@ -932,7 +939,7 @@ a:hover {
 	background: transparent;
 	border: 1px solid rgba(104, 171, 187, 1);
 	margin-bottom: 25px;
-	color: #68ABBB !important;
+	color: #1ca1a0 !important;
 	font-size: 13px;
 	-webkit-transition: all 0.4s;
 	-moz-transition: all 0.4s;
