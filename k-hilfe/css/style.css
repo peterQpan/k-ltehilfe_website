@@ -1,0 +1,68 @@
+/* Kältehilfe style */
+:root {
+  --kh-red: #e50510;
+  --kh-teal: #1ca1a0;
+  --kh-yellow: #feae01;
+  --kh-blue: #0788cc;
+  --kh-pink: #e1156c;
+  --kh-green: #98c021;
+  --primary-color: var(--kh-teal);
+  --secondary-color: var(--kh-red);
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.navbar {
+  background-color: var(--primary-color);
+}
+
+.navbar .nav-link {
+  color: #fff;
+}
+
+.navbar .nav-link:hover {
+  color: var(--kh-yellow);
+}
+
+.custom-btn {
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+section {
+  padding: 60px 0;
+}
+
+section h2 {
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+}
+
+footer {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 20px 0;
+}
+
+.social-icon a {
+  color: #fff;
+  margin-right: 10px;
+}
+
+.hero {
+  background: url('../images/placeholder.svg') center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.25rem;
+}

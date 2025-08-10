@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ingos kleine Kältehilfe</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<header class="bg-light py-2">
+  <div class="container d-flex justify-content-between">
+    <div class="small">
+      <span data-i18n="contact_address">Stengelstr. 30, 66117 Saarbrücken</span> ·
+      <a href="tel:+491749117841" class="text-decoration-none" data-i18n="contact_phone" aria-label="+49 174 9117841"></a> ·
+      <a href="mailto:hand-in-hand@gmx.de" class="text-decoration-none" data-i18n="contact_email">hand-in-hand@gmx.de</a>
+    </div>
+    <ul class="list-unstyled d-flex social-icon mb-0">
+      <li><a href="https://www.facebook.com/p/Ingos-kleine-K%C3%A4ltehilfe-100064428263297/" class="bi bi-facebook" aria-label="Facebook"></a></li>
+      <li><a href="https://www.instagram.com/ingoskleinekaeltehilfe" class="bi bi-instagram" aria-label="Instagram"></a></li>
+    </ul>
+  </div>
+</header>
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#" data-i18n="nav_home">Start</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#about" data-i18n="nav_about">Über uns</a></li>
+        <li class="nav-item"><a class="nav-link" href="#support" data-i18n="nav_support">So kannst du helfen</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav_contact">Kontakt</a></li>
+        <li class="nav-item"><a class="nav-link custom-btn ms-lg-3" href="#contact" data-i18n="nav_donate">Spenden</a></li>
+        <li class="nav-item ms-3">
+          <select id="language-select" class="form-select form-select-sm">
+            <option value="de">DE</option>
+            <option value="en">EN</option>
+            <option value="tr">TR</option>
+            <option value="it">IT</option>
+            <option value="es">ES</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="hero d-flex flex-column justify-content-center align-items-center text-white">
+  <h1 data-i18n="hero_title">Gemeinsam Wärme schenken</h1>
+  <p data-i18n="hero_subtitle">Ingos kleine Kältehilfe unterstützt obdachlose Menschen in Saarbrücken.</p>
+  <div class="mt-4">
+    <a href="#support" class="btn custom-btn me-2" data-i18n="hero_cta_donate">Jetzt spenden</a>
+    <a href="#contact" class="btn btn-light" data-i18n="hero_cta_contact">Kontakt</a>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <h2 data-i18n="about_title">Über uns</h2>
+    <p data-i18n="about_text">Seit 2016 versorgt Ingos kleine Kältehilfe obdachlose und bedürftige Menschen in Saarbrücken täglich mit warmem Essen, Getränken und Kleidung. Rund 64 Helfer engagieren sich ehrenamtlich an der Ausgabestelle in der Stengelstraße 30.</p>
+  </div>
+</section>
+
+<section id="support" class="bg-light">
+  <div class="container">
+    <h2 data-i18n="support_title">So kannst du helfen</h2>
+    <ul>
+      <li data-i18n="support_list1">Spende Lebensmittel, Kleidung oder Hygieneartikel.</li>
+      <li data-i18n="support_list2">Unterstütze uns finanziell – jeder Euro hilft.</li>
+      <li data-i18n="support_list3">Engagiere dich ehrenamtlich beim Kochen oder Ausgeben.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="feed">
+  <div class="container">
+    <h2 data-i18n="feed_title">Aktuelles</h2>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <iframe title="Facebook feed" class="w-100 border-0" src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/p/Ingos-kleine-K%C3%A4ltehilfe-100064428263297/&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true" height="500" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      </div>
+      <div class="col-md-6 mb-3">
+        <iframe title="Instagram feed" class="w-100 border-0" src="https://www.instagram.com/ingoskleinekaeltehilfe/embed" height="500" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="bg-light">
+  <div class="container">
+    <h2 data-i18n="contact_title">Kontakt</h2>
+    <p><i class="bi bi-geo-alt-fill me-2"></i><span data-i18n="contact_address">Stengelstr. 30, 66117 Saarbrücken</span></p>
+    <p><i class="bi bi-telephone-fill me-2"></i><a href="tel:+491749117841" data-i18n="contact_phone" class="text-decoration-none" aria-label="+49 174 9117841"></a></p>
+    <p><i class="bi bi-envelope-fill me-2"></i><a href="mailto:hand-in-hand@gmx.de" data-i18n="contact_email" class="text-decoration-none">hand-in-hand@gmx.de</a></p>
+  </div>
+</section>
+
+<footer class="text-center">
+  <div class="container">
+    <p data-i18n="footer_copy">© 2025 Ingos kleine Kältehilfe – Hand in Hand e.V.</p>
+    <p><a href="impressum.html" class="text-white text-decoration-none" data-i18n="impressum_title">Impressum</a> · <a href="datenschutz.html" class="text-white text-decoration-none" data-i18n="privacy_title">Datenschutz</a></p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/lang.js"></script>
+</body>
+</html>
