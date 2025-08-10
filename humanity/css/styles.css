@@ -211,7 +211,7 @@ p.text-center.sub-text {
 .social-share  .fa:hover{
 	cursor:pointer;
 	color: white;
-	background: #2494A0;
+	background: #e50510;
 	transition:.3s;
 }
 .fa-2x{
@@ -222,7 +222,7 @@ p.text-center.sub-text {
 }
 
 ul.nav.navbar-nav li a{
-	color:#2494A0;
+	color:#e50510;
 	text-transform: uppercase;
 	font-weight: bold;
 	font-size: 15px;
@@ -301,7 +301,7 @@ ul.nav.navbar-nav li a{
 .btn-block {
 	margin-right: 10px;
 	padding: 12px 37px;
-	background: #68ABBB;
+	background: #1ca1a0;
 	margin-bottom: 10px;
 }
 .form-control {
@@ -313,7 +313,7 @@ ul.nav.navbar-nav li a{
 }
 .btn-tertiary{
 	padding: 12px 37px;
-	background: #68ABBB;
+	background: #1ca1a0;
 	color: white;
 }
 
@@ -379,7 +379,7 @@ ul.nav.navbar-nav li a{
 		margin:0;
 		z-index: 3;
 		opacity:0.9;
-		background: #68ABBB;
+		background: #1ca1a0;
 		-webkit-transition: all 0.4s;
 		-moz-transition: all 0.4s;
 		transition: all 0.4s;
@@ -404,7 +404,7 @@ ul.nav.navbar-nav li a{
 	}
 
 	.team-members .member-details .member-position{
-		color:#8BC3A3;
+		color:#1ca1a0;
 		font-size:13px;
 	}
 
@@ -453,7 +453,7 @@ ul.nav.navbar-nav li a{
 @media (max-width:991px){
     .bx-wrapper .bx-controls-direction a{
         position: static !important;
-        background: #68ABBB;
+        background: #1ca1a0;
         color: white;
         padding: 10px;
         text-decoration: none;
@@ -499,7 +499,7 @@ padding: 5px;
 .service-features .img-container {
 	padding: 50px 45px;
 	border-radius: 3px;
-	background: #6799A0;
+	background: #1ca1a0;
 	/* width: 120px; */
 	margin: 0 auto;
 	position: relative;
@@ -513,7 +513,7 @@ padding: 5px;
 	position: absolute;
 	width: 0;
 	height: 0;
-	border: 15px solid #6799A0;
+	border: 15px solid #1ca1a0;
 	border-bottom: 0px solid transparent !important;
 	border-right: 20px solid transparent !important;
 	border-left: 20px solid transparent !important;
@@ -596,7 +596,7 @@ section.blog {
 	position: absolute;
 	top: 20px;
 	left: 20px;
-	background: #41657C;
+	background: #e50510;
 	height: 30px;
 	padding: 4px 11px;
 	z-index: 8;
@@ -932,7 +932,7 @@ a:hover {
 	background: transparent;
 	border: 1px solid rgba(104, 171, 187, 1);
 	margin-bottom: 25px;
-	color: #68ABBB !important;
+	color: #1ca1a0 !important;
 	font-size: 13px;
 	-webkit-transition: all 0.4s;
 	-moz-transition: all 0.4s;
@@ -940,13 +940,13 @@ a:hover {
 }
 
   .form:hover{
-    border:1px solid #8BC3A3;
+    border:1px solid #1ca1a0;
   }
 
   .form:focus{
     color: white;
     outline: none;
-    border:1px solid #8BC3A3;
+    border:1px solid #1ca1a0;
   }
 
   .textarea{
@@ -975,7 +975,7 @@ a:hover {
   }
 
   .button:hover{
-    background:#8BC3A3;
+    background:#1ca1a0;
     color:white;
   }
   .contact-form-full{
@@ -1104,7 +1104,7 @@ button.button-info {
 
 
 .box-img {
-	border: 1px solid #0C93B2;
+	border: 1px solid #1ca1a0;
 	position: relative;
 	display: block;
 	background-color: rgba(230, 230, 230, 0.55);
@@ -1112,7 +1112,7 @@ button.button-info {
 	margin-top: 2px;
 }
 .box-text {
-	border: 1px solid #0C93B2;
+	border: 1px solid #1ca1a0;
 	position: relative;
 	display: block;
 	background:url(../img/white.jpg);
@@ -1210,7 +1210,7 @@ footer{
 	-ms-transition:all 0.3s ease-in;
 }
 .button-totop:hover {
-	background: #31A1AC;
+	background: #1ca1a0;
 }
 .button-totop .fa {
 	font-size: 24px;
