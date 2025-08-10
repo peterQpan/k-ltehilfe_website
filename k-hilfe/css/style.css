@@ -1,0 +1,46 @@
+:root {
+  --primary-color: #e50510;
+  --secondary-color: #1ca1a0;
+  --accent-color: #feae01;
+  --info-color: #0788cc;
+  --pink-color: #e1156c;
+  --green-color: #98c021;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.navbar {
+  background-color: var(--primary-color);
+}
+
+.navbar-brand, .nav-link {
+  color: #fff !important;
+}
+
+.nav-link:hover {
+  color: var(--accent-color) !important;
+}
+
+.hero {
+  background-color: var(--secondary-color);
+  color: #fff;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+section {
+  padding: 4rem 0;
+}
+
+.gallery img {
+  max-width: 150px;
+  margin: 0.5rem;
+}
+
+.footer {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 1rem 0;
+}
