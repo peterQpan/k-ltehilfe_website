@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="hero.title">Ingos kleine Kältehilfe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="images/logo.svg" alt="Logo" width="40" class="me-2">Kältehilfe</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample" aria-controls="navbarsExample" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsExample">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#hero" data-i18n="nav.home">Start</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about" data-i18n="nav.about">Über uns</a></li>
+          <li class="nav-item"><a class="nav-link" href="#help" data-i18n="nav.help">Helfen</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav.contact">Kontakt</a></li>
+          <li class="nav-item"><a class="nav-link" href="impressum.html" data-i18n="nav.imprint">Impressum</a></li>
+          <li class="nav-item"><a class="nav-link" href="datenschutz.html" data-i18n="nav.privacy">Datenschutz</a></li>
+        </ul>
+        <select id="language-select" class="form-select w-auto">
+          <option value="de">DE</option>
+          <option value="en">EN</option>
+          <option value="tr">TR</option>
+          <option value="it">IT</option>
+          <option value="es">ES</option>
+        </select>
+      </div>
+    </div>
+  </nav>
+
+  <header id="hero" class="hero">
+    <div class="container">
+      <h1 data-i18n="hero.title">Ingos kleine Kältehilfe</h1>
+      <p data-i18n="hero.subtitle">Hilf uns, Bedürftigen Wärme und Nahrung zu geben.</p>
+    </div>
+  </header>
+
+  <section id="about" class="section">
+    <div class="container">
+      <h2 data-i18n="about.heading">Über uns</h2>
+      <p data-i18n="about.text">Text</p>
+    </div>
+  </section>
+
+  <section id="help" class="section bg-light">
+    <div class="container">
+      <h2 data-i18n="help.heading">So kannst du helfen</h2>
+      <p data-i18n="help.text">Text</p>
+      <div class="mt-3">
+        <a href="https://www.facebook.com/p/Ingos-kleine-K%C3%A4ltehilfe-100064428263297/" class="btn btn-primary me-2" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+        <a href="https://www.instagram.com/ingoskleinekaeltehilfe" class="btn btn-primary" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 data-i18n="contact.heading">Kontakt</h2>
+      <p><i class="fa fa-map-marker-alt me-2"></i><span data-i18n="contact.address">Adresse</span></p>
+      <p><i class="fa fa-phone me-2"></i><a href="tel:+491749117841" data-i18n="contact.phone">+49 174 9117841</a></p>
+      <p><i class="fa fa-envelope me-2"></i><a href="mailto:hand-in-hand@gmx.de" data-i18n="contact.email">hand-in-hand@gmx.de</a></p>
+    </div>
+  </section>
+
+  <section id="feed" class="section bg-light">
+    <div class="container">
+      <h2>Facebook</h2>
+      <div id="social-feed">
+        <div class="fb-page" data-href="https://www.facebook.com/p/Ingos-kleine-K%C3%A4ltehilfe-100064428263297/" data-tabs="timeline" data-width="340" data-height="400" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center text-white p-4">
+    <p>&copy; 2025 Kältehilfe</p>
+    <div>
+      <a href="https://www.facebook.com/p/Ingos-kleine-K%C3%A4ltehilfe-100064428263297/" class="text-white me-3" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/ingoskleinekaeltehilfe" class="text-white" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v17.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/i18next@22.4.9/dist/umd/i18next.min.js"></script>
+  <script src="js/translate.js"></script>
+</body>
+</html>
