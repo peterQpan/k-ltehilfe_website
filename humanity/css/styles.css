@@ -9,10 +9,6 @@ License:GNU General Public License v2 or later
 License URI:http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-@import url(http://fonts.googleapis.com/css?family=Varela+Round);
-@import url(http://fonts.googleapis.com/css?family=Lato);
-@import url(http://fonts.googleapis.com/css?family=Allerta+Stencil);
-@import url(http://fonts.googleapis.com/css?family=Raleway:300);
 
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 /******* General ******/
@@ -30,28 +26,25 @@ divider {
 	position: relative;
 	top: 29%;
 	font-size: 35px;
-<<<<<<< HEAD
 	text-align: center;
 	margin-bottom: 40px;
-=======
->>>>>>> origin/gh-pages
 }
 .connect-text{
 	margin-top: 50px;
 }
 
 .header-text span {
-	font-family: 'Allerta Stencil', sans-serif;
+        font-family: 'Open Sans', sans-serif;
 	padding: 8px;
 	font-weight: bold;
 	border-bottom: 2px solid;
 }
 body {
-	background: rgba(153, 211, 213, 0.32);
-	margin: 0px;
-	padding: 0px;
-	font-family: 'Varela Round', sans-serif;
-	color: #354b5e;
+        background: rgba(153, 211, 213, 0.32);
+        margin: 0px;
+        padding: 0px;
+        font-family: 'Open Sans', sans-serif;
+        color: #354b5e;
 }
 
 
@@ -61,14 +54,21 @@ margin-bottom: 49px;
 }
 
 p, li {
-	padding: 0;
-	font-family: 'Raleway',sans-serif;
-	font-weight: 300;
-	font-size: 14px;
-	line-height: 28px;
-	color: #666;
-	list-style: none;
+        padding: 0;
+        font-family: 'Open Sans',sans-serif;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 28px;
+        color: #666;
+        list-style: none;
 }
+
+/* Color utility classes based on Vereinsfarben */
+.col-red { color: #e50510; }
+.col-green { color: #1ca1a0; }
+.bg-blue-point { background-color: #0788cc; }
+.bg-fio-point { background-color: #feae01; }
+.bg-green { background-color: #1ca1a0; }
 /******* End General ******/
 
 /*-------------------------------------------------------------------------------------------------------------------------------*/
@@ -209,10 +209,10 @@ p.text-center.sub-text {
 	cursor: pointer;
 }
 .social-share  .fa:hover{
-	cursor:pointer;
-	color: white;
-	background: #2494A0;
-	transition:.3s;
+        cursor:pointer;
+        color: white;
+        background: #1ca1a0;
+        transition:.3s;
 }
 .fa-2x{
 	padding-right: 20px;
@@ -222,10 +222,10 @@ p.text-center.sub-text {
 }
 
 ul.nav.navbar-nav li a{
-	color:#2494A0;
-	text-transform: uppercase;
-	font-weight: bold;
-	font-size: 15px;
+        color:#1ca1a0;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 15px;
 }
 .logo {
 	position: relative;
@@ -299,10 +299,10 @@ ul.nav.navbar-nav li a{
 /******* Donations ******/
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 .btn-block {
-	margin-right: 10px;
-	padding: 12px 37px;
-	background: #68ABBB;
-	margin-bottom: 10px;
+        margin-right: 10px;
+        padding: 12px 37px;
+        background: #feae01;
+        margin-bottom: 10px;
 }
 .form-control {
 	height: 47px;
@@ -312,9 +312,9 @@ ul.nav.navbar-nav li a{
 	text-align: center;
 }
 .btn-tertiary{
-	padding: 12px 37px;
-	background: #68ABBB;
-	color: white;
+        padding: 12px 37px;
+        background: #1ca1a0;
+        color: white;
 }
 
 
@@ -379,7 +379,7 @@ ul.nav.navbar-nav li a{
 		margin:0;
 		z-index: 3;
 		opacity:0.9;
-		background: #68ABBB;
+                background: #0788cc;
 		-webkit-transition: all 0.4s;
 		-moz-transition: all 0.4s;
 		transition: all 0.4s;
@@ -434,7 +434,7 @@ ul.nav.navbar-nav li a{
 	}
 	.list-unstyled li a i.fa {
 		font-size: 22px;
-		background: rgb(43, 112, 158);
+        background: #0788cc;
 		padding: 8px;
 		color: white;
 		width: 35px;
@@ -453,7 +453,7 @@ ul.nav.navbar-nav li a{
 @media (max-width:991px){
     .bx-wrapper .bx-controls-direction a{
         position: static !important;
-        background: #68ABBB;
+        background: #0788cc;
         color: white;
         padding: 10px;
         text-decoration: none;
@@ -548,8 +548,8 @@ section.blog {
 }
 
 .content-block .button-main {
-	border: 1px solid rgba(47, 116, 116, 1);
-	background: rgba(47, 116, 116, 1);
+        border: 1px solid #1ca1a0;
+        background: #1ca1a0;
 	padding: 20px 22px;
 	line-height: 10px;
 	color: white;
@@ -560,8 +560,8 @@ section.blog {
 
 	.button-main.bg-fio-point:hover {
 	background: none;
-	border: 1px solid rgba(47, 116, 116, 1);
-	color: rgba(47, 116, 116, 1);
+        border: 1px solid #1ca1a0;
+        color: #1ca1a0;
 	}
 
 .hover-image
@@ -738,18 +738,18 @@ background: none;
 }
 @media (max-width: 600px){
 .carousel-caption {
-font-family: 'Poiret One', cursive;
-font-size: 24px !important;
-font-weight: bold;
-background: none;
-}
+ font-family: 'Open Sans', sans-serif;
+ font-size: 24px !important;
+ font-weight: bold;
+ background: none;
+ }
 }
 .carousel-caption {
-	font-family: 'Poiret One', cursive;
-	text-transform: uppercase;
-	font-size: 50px;
-	font-weight: bold;
-	background: rgba(152, 168, 173, 0.43);
+        font-family: 'Open Sans', sans-serif;
+        text-transform: uppercase;
+        font-size: 50px;
+        font-weight: bold;
+        background: rgba(152, 168, 173, 0.43);
 
 }
 
@@ -930,9 +930,9 @@ a:hover {
 	width: 100%;
 	padding: 15px;
 	background: transparent;
-	border: 1px solid rgba(104, 171, 187, 1);
+        border: 1px solid rgba(7, 136, 204, 1);
 	margin-bottom: 25px;
-	color: #68ABBB !important;
+        color: #0788cc !important;
 	font-size: 13px;
 	-webkit-transition: all 0.4s;
 	-moz-transition: all 0.4s;
