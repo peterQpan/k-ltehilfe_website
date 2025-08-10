@@ -1,0 +1,60 @@
+:root {
+  --primary-color: #1ca1a0;
+  --accent-color: #feae01;
+  --link-color: #0788cc;
+}
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+header {
+  background: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+.logo {
+  max-height: 80px;
+}
+nav a {
+  margin: 0 0.5rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.hero {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+.cta {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-color);
+  color: #000;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.contact, .socials {
+  padding: 1rem;
+}
+.socials ul {
+  list-style: none;
+  padding: 0;
+}
+.socials li {
+  margin-bottom: 0.5rem;
+}
+.socials a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: var(--primary-color);
+  color: #fff;
+}
