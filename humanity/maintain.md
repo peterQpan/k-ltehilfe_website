@@ -1,5 +1,7 @@
 # Pflege der Website "Ingos kleine Kältehilfe"
 
+# v003 war das
+
 ## Hosting
 1. Stelle sicher, dass alle Dateien im Ordner `humanity` liegen und statisch ausgeliefert werden können.
 2. Zum lokalen Testen kann ein einfacher Webserver genutzt werden:
