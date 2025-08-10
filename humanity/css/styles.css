@@ -14,6 +14,12 @@ License URI:http://www.gnu.org/licenses/gpl-2.0.html
 @import url(http://fonts.googleapis.com/css?family=Allerta+Stencil);
 @import url(http://fonts.googleapis.com/css?family=Raleway:300);
 
+:root {
+  --primary-color: #e50510;
+  --secondary-color: #1ca1a0;
+  --accent-color: #feae01;
+}
+
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 /******* General ******/
 /*-------------------------------------------------------------------------------------------------------------------------------*/
@@ -27,31 +33,28 @@ divider {
 	background: url(../images/divider.jpg) no-repeat fixed center;
 }
 .header-text {
-	position: relative;
-	top: 29%;
-	font-size: 35px;
-<<<<<<< HEAD
-	text-align: center;
-	margin-bottom: 40px;
-=======
->>>>>>> origin/gh-pages
+        position: relative;
+        top: 29%;
+        font-size: 35px;
+        text-align: center;
+        margin-bottom: 40px;
 }
 .connect-text{
 	margin-top: 50px;
 }
 
 .header-text span {
-	font-family: 'Allerta Stencil', sans-serif;
-	padding: 8px;
-	font-weight: bold;
-	border-bottom: 2px solid;
+        font-family: 'Allerta Stencil', sans-serif;
+        padding: 8px;
+        font-weight: bold;
+        border-bottom: 2px solid var(--accent-color);
 }
 body {
-	background: rgba(153, 211, 213, 0.32);
-	margin: 0px;
-	padding: 0px;
-	font-family: 'Varela Round', sans-serif;
-	color: #354b5e;
+        background: rgba(28, 161, 160, 0.1);
+        margin: 0px;
+        padding: 0px;
+        font-family: 'Varela Round', sans-serif;
+        color: #354b5e;
 }
 
 
@@ -112,6 +115,27 @@ p, li {
     }
     }
 
+.navbar {
+        background: var(--primary-color);
+}
+
+.navbar a {
+        color: #fff !important;
+}
+
+.navbar .selected a {
+        color: var(--accent-color) !important;
+}
+
+.button-main {
+        background: var(--secondary-color);
+        color: #fff;
+}
+
+.button-main:hover {
+        background: var(--accent-color);
+        color: #fff;
+}
 .header{
 	margin-top: 20px;
 	padding: 50px 0;
@@ -177,9 +201,10 @@ p.text-center.sub-text {
 
 
 .nav>li>a:focus, .nav>li>a:hover{
-	text-decoration: none;
-	background: none;
-	transition: .3s;
+        text-decoration: none;
+        background: none;
+        color: var(--accent-color);
+        transition: .3s;
 }
 
 .header-white .search {
@@ -209,10 +234,10 @@ p.text-center.sub-text {
 	cursor: pointer;
 }
 .social-share  .fa:hover{
-	cursor:pointer;
-	color: white;
-	background: #2494A0;
-	transition:.3s;
+        cursor:pointer;
+        color: white;
+        background: var(--secondary-color);
+        transition:.3s;
 }
 .fa-2x{
 	padding-right: 20px;
@@ -222,10 +247,10 @@ p.text-center.sub-text {
 }
 
 ul.nav.navbar-nav li a{
-	color:#2494A0;
-	text-transform: uppercase;
-	font-weight: bold;
-	font-size: 15px;
+        color:#fff;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 15px;
 }
 .logo {
 	position: relative;
