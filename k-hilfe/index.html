@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="title">Ingos kleine Kältehilfe</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="bg-primary text-white p-3">
+  <div class="container d-flex justify-content-between">
+    <span class="h5 mb-0" data-i18n="header.title">Ingos kleine Kältehilfe</span>
+    <div class="d-flex align-items-center">
+      <a href="https://www.facebook.com/p/Ingos-kleine-K%C3%A4ltehilfe-100064428263297/" class="text-white me-2" aria-label="Facebook"><i class="bi-facebook"></i></a>
+      <a href="https://www.instagram.com/ingoskleinekaeltehilfe" class="text-white" aria-label="Instagram"><i class="bi-instagram"></i></a>
+      <select id="language-select" class="form-select form-select-sm w-auto ms-3">
+        <option value="de">DE</option>
+        <option value="en">EN</option>
+        <option value="tr">TR</option>
+        <option value="it">IT</option>
+        <option value="es">ES</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#"><img src="images/logo.svg" alt="Logo" width="40"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home" data-i18n="nav.home">Start</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about" data-i18n="nav.about">Über uns</a></li>
+        <li class="nav-item"><a class="nav-link" href="#help" data-i18n="nav.help">Helfen</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav.contact">Kontakt</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main>
+<section id="home" class="py-5 text-center bg-light">
+  <div class="container">
+    <h1 class="mb-3" data-i18n="hero.title">Hilfe die ankommt</h1>
+    <p class="lead" data-i18n="hero.subtitle">Täglich warme Mahlzeiten und menschliche Nähe für Menschen in Not in Saarbrücken.</p>
+  </div>
+</section>
+
+<section id="about" class="py-5">
+  <div class="container">
+    <h2 data-i18n="about.title">Über uns</h2>
+    <p data-i18n="about.text">Ingos kleine Kältehilfe entstand 2016 aus einem spontanen Facebook-Aufruf von Ingo Wilke. Heute versorgen rund 64 Ehrenamtliche täglich bis zu 100 bedürftige Menschen mit warmen Mahlzeiten, Getränken und Kleidung. Unsere Ausgabestelle befindet sich in der Stengelstraße 30 in Saarbrücken.</p>
+  </div>
+</section>
+
+<section id="help" class="py-5 bg-light">
+  <div class="container">
+    <h2 data-i18n="help.title">So kannst du helfen</h2>
+    <ul>
+      <li data-i18n="help.donate">Spenden von Lebensmitteln, Kleidung oder Geld (PayPal: hand-in-hand@gmx.de).</li>
+      <li data-i18n="help.volunteer">Werde Teil unseres ehrenamtlichen Teams und hilf bei der Essensausgabe.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="social" class="py-5">
+  <div class="container">
+    <h2 class="h5" data-i18n="social.title">Einblicke</h2>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <div class="fb-page" data-href="https://www.facebook.com/p/Ingos-kleine-K%C3%A4ltehilfe-100064428263297/" data-tabs="timeline" data-height="300" data-small-header="true" data-adapt-container-width="true"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CnSGp1bOEuv/" data-instgrm-version="14"></blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="py-5 bg-light">
+  <div class="container">
+    <h2 data-i18n="contact.title">Kontakt</h2>
+    <p><i class="bi-geo-alt"></i> <span data-i18n="contact.address">Stengelstraße 30, 66117 Saarbrücken</span></p>
+    <p><i class="bi-telephone"></i> <a href="tel:+491749117841" data-i18n="contact.phone">+49 174 9117841</a></p>
+    <p><i class="bi-envelope"></i> <a href="mailto:hand-in-hand@gmx.de" data-i18n="contact.email">hand-in-hand@gmx.de</a></p>
+  </div>
+</section>
+</main>
+
+<footer class="text-center text-white p-3" style="background-color: var(--site-footer-bg-color);">
+  <small data-i18n="footer.copy">Ingos kleine Kältehilfe – Hand in Hand e.V.</small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v19.0"></script>
+<script async src="//www.instagram.com/embed.js"></script>
+<script src="js/lang.js"></script>
+</body>
+</html>
