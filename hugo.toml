@@ -1,0 +1,4 @@
+baseURL = '/'
+languageCode = 'de'
+title = 'Ingos kleine Kältehilfe – Hand in Hand e.V.'
+disableKinds = ['taxonomy', 'term']
