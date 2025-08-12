@@ -1,0 +1,7 @@
+baseURL = '/'
+languageCode = 'de-de'
+title = 'Ingos kleine Kältehilfe – Hand in Hand e.V.'
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
