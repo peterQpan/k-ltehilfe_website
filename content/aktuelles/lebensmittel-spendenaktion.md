@@ -4,6 +4,7 @@ date: 2024-10-20
 description: "Nahrungsmittel wurden gesammelt und an bedürftige Familien verteilt."
 image: "/images/news/medium-shot-people-collecting-foodstuff.jpg"
 categories: ["Essen", "Spende", "Fürsorge"]
+tags: ["Spendenaktion"]
 draft: false
 ---
 

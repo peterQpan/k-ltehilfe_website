@@ -5,3 +5,7 @@ title = 'Ingos kleine Kältehilfe – Hand in Hand e.V.'
 [markup]
   [markup.goldmark.renderer]
     unsafe = true
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"

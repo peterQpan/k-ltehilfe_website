@@ -14,12 +14,21 @@
                         <a href="{{ $p.RelPermalink }}">
                             <img src="{{ $p.Params.image }}" class="news-image img-fluid" alt="">
                         </a>
-                        {{ with $p.Params.categories }}
+                        {{ $tags := $p.Params.tags | default $p.Params.categories }}
+                        {{ with $tags }}
                         <div class="news-category-block">
                             {{ range . }}
-                            <a href="#" class="category-block-link">
-                                {{ . }}
-                            </a>
+                            {{ $tag := . }}
+                            {{ $tagPage := site.GetPage (printf "/tags/%s" (urlize $tag)) }}
+                            {{ if and $tagPage (eq (len $tagPage.Pages) 1) }}
+                                {{ with index $tagPage.Pages 0 }}
+                                <a href="{{ .RelPermalink }}" class="category-block-link">{{ $tag }}</a>
+                                {{ end }}
+                            {{ else if $tagPage }}
+                                <a href="{{ $tagPage.RelPermalink }}" class="category-block-link">{{ $tag }}</a>
+                            {{ else }}
+                                <span class="category-block-link">{{ $tag }}</span>
+                            {{ end }}
                             {{ end }}
                         </div>
                         {{ end }}
