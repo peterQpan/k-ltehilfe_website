@@ -88,52 +88,30 @@
                 {{ end }}
 
                 <div class="category-block d-flex flex-column">
-                    <h5 class="mb-3">Categories</h5>
-                    <a href="#" class="category-block-link">
-                        Drinking water
-                        <span class="badge">20</span>
-                    </a>
-                    <a href="#" class="category-block-link">
-                        Food Donation
-                        <span class="badge">30</span>
-                    </a>
-                    <a href="#" class="category-block-link">
-                        Children Education
-                        <span class="badge">10</span>
-                    </a>
-                    <a href="#" class="category-block-link">
-                        Poverty Development
-                        <span class="badge">15</span>
-                    </a>
-                    <a href="#" class="category-block-link">
-                        Clothing Donation
-                        <span class="badge">20</span>
-                    </a>
+                    <h5 class="mb-3">Kategorien</h5>
+                    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+                        {{ $rel := printf "/categories/%s" ($name | urlize) }}
+                        {{ $pages := where $taxonomy "Section" "aktuelles" }}
+                        {{ if gt (len $pages) 0 }}
+                            <a href="{{ $rel | relLangURL }}" class="category-block-link">
+                                {{ $name }}
+                                <span class="badge">{{ len $pages }}</span>
+                            </a>
+                        {{ end }}
+                    {{ end }}
                 </div>
 
                 <div class="tags-block">
                     <h5 class="mb-3">Tags</h5>
-                    <a href="#" class="tags-block-link">
-                        Donation
-                    </a>
-                    <a href="#" class="tags-block-link">
-                        Clothing
-                    </a>
-                    <a href="#" class="tags-block-link">
-                        Food
-                    </a>
-                    <a href="#" class="tags-block-link">
-                        Children
-                    </a>
-                    <a href="#" class="tags-block-link">
-                        Education
-                    </a>
-                    <a href="#" class="tags-block-link">
-                        Poverty
-                    </a>
-                    <a href="#" class="tags-block-link">
-                        Clean Water
-                    </a>
+                    {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+                        {{ $rel := printf "/tags/%s" ($name | urlize) }}
+                        {{ $pages := where $taxonomy "Section" "aktuelles" }}
+                        {{ if gt (len $pages) 0 }}
+                            <a href="{{ $rel | relLangURL }}" class="tags-block-link">
+                                {{ $name }}
+                            </a>
+                        {{ end }}
+                    {{ end }}
                 </div>
 
                 <form class="custom-form subscribe-form" action="#" method="get" role="form">
