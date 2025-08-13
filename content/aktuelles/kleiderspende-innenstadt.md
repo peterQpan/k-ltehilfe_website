@@ -4,6 +4,7 @@ date: 2024-10-12
 description: "Freiwillige sammeln Kleidung für Bedürftige im Stadtzentrum."
 image: "/images/news/medium-shot-volunteers-with-clothing-donations.jpg"
 categories: ["Leben", "Kleiderspende"]
+tags: ["Leben", "Kleiderspende"]
 draft: false
 ---
 

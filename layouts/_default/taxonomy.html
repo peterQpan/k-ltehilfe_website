@@ -1,0 +1,33 @@
+{{ define "main" }}
+<section class="news-section section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mb-5">
+        <h2>{{ .Title }}</h2>
+      </div>
+      {{ range .Pages }}
+      <div class="col-lg-6 col-12">
+        <div class="news-block mb-4">
+          <div class="news-block-top">
+            <a href="{{ .RelPermalink }}">
+              <img src="{{ .Params.image }}" class="news-image img-fluid" alt="">
+            </a>
+          </div>
+          <div class="news-block-info">
+            <div class="news-block-date">
+              <p><i class="bi-calendar4 custom-icon me-1"></i>{{ .Date.Format "2. January 2006" }}</p>
+            </div>
+            <div class="news-block-title mb-2">
+              <h4><a href="{{ .RelPermalink }}" class="news-block-title-link">{{ .Title }}</a></h4>
+            </div>
+            <div class="news-block-body">
+              <p>{{ .Params.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

@@ -4,6 +4,7 @@ date: 2024-10-16
 description: "Ärztliche Versorgung wurde auf der Straße angeboten."
 image: "/images/news/africa-humanitarian-aid-doctor.jpg"
 categories: ["Gesundheit", "Hilfe"]
+tags: ["Gesundheit", "Hilfe"]
 draft: false
 ---
 

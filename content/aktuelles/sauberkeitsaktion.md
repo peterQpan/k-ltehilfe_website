@@ -4,6 +4,7 @@ date: 2024-10-24
 description: "Freiwillige reinigen öffentliche Plätze und Parks."
 image: "/images/news/close-up-happy-people-working-together.jpg"
 categories: ["Engagement", "Umwelt"]
+tags: ["Engagement", "Umwelt"]
 draft: false
 ---
 

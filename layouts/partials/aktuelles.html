@@ -14,12 +14,24 @@
                         <a href="{{ $p.RelPermalink }}">
                             <img src="{{ $p.Params.image }}" class="news-image img-fluid" alt="">
                         </a>
-                        {{ with $p.Params.categories }}
+                        {{ $tags := $p.Params.tags | default $p.Params.categories }}
+                        {{ with $tags }}
                         <div class="news-category-block">
                             {{ range . }}
-                            <a href="#" class="category-block-link">
-                                {{ . }}
+                            {{ $tag := . }}
+                            {{ $tagPages := where $.Site.RegularPages "Params.tags" "intersect" (slice $tag) }}
+                            {{ if not $tagPages }}
+                            {{ $tagPages = where $.Site.RegularPages "Params.categories" "intersect" (slice $tag) }}
+                            {{ end }}
+                            {{ if eq (len $tagPages) 1 }}
+                            <a href="{{ (index $tagPages 0).RelPermalink }}" class="category-block-link">
+                                {{ $tag }}
                             </a>
+                            {{ else }}
+                            <a href="{{ (printf "/tags/%s/" (urlize $tag)) | relURL }}" class="category-block-link">
+                                {{ $tag }}
+                            </a>
+                            {{ end }}
                             {{ end }}
                         </div>
                         {{ end }}
