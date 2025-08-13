@@ -8,3 +8,4 @@ draft: false
 ---
 
 Wir haben gemeinsam mit vielen engagierten Helferinnen und Helfern warme Kleidung gesammelt und direkt an obdachlose Menschen verteilt. Die Aktion zeigt, wie viel mit wenig Aufwand erreicht werden kann.
+
