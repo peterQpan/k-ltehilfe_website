@@ -17,9 +17,15 @@
                         {{ with $p.Params.categories }}
                         <div class="news-category-block">
                             {{ range . }}
-                            <a href="#" class="category-block-link">
-                                {{ . }}
-                            </a>
+                                {{ $cat := . }}
+                                {{ $pages := index $.Site.Taxonomies.categories $cat }}
+                                {{ if eq (len $pages) 1 }}
+                                    <a href="{{ (index $pages 0).RelPermalink }}" class="category-block-link">{{ $cat }}</a>
+                                {{ else }}
+                                    {{ with $.Site.GetPage (printf "/categories/%s" (urlize $cat)) }}
+                                    <a href="{{ .RelPermalink }}" class="category-block-link">{{ $cat }}</a>
+                                    {{ end }}
+                                {{ end }}
                             {{ end }}
                         </div>
                         {{ end }}
