@@ -79,11 +79,11 @@
                 {{ $tagged := false }}
                 <div class="tags-block">
                     <h5 class="mt-5 mb-3">Tags</h5>
-                    {{ range $name, $pages := $.Site.Taxonomies.tags }}
-                    {{ $filtered := where $pages "Section" "aktuelles" }}
+                    {{ range $name, $taxonomy := $.Site.Taxonomies.tags }}
+                    {{ $filtered := where $taxonomy "Section" "aktuelles" }}
                     {{ if gt (len $filtered) 0 }}
                     {{ $tagged = true }}
-                    {{ with $.Site.GetPage (printf "/tags/%s" $name) }}
+                    {{ with $taxonomy.Page }}
                     <a href="{{ .RelPermalink }}" class="tags-block-link">
                         {{ .Title }}
                     </a>
