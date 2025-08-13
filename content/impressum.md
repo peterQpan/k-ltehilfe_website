@@ -1,36 +1,31 @@
 ---
 title: "Impressum"
 description: "Angaben gemäß § 5 TMG für Ingos kleine Kältehilfe – Hand in Hand e.V."
-draft: false
 ---
 
-## Angaben gemäß § 5 TMG
+# Impressum
 
-Ingos kleine Kältehilfe – Hand in Hand e.V.  
-Stengelstr. 30  
-66117 Saarbrücken  
-Deutschland
+Ingos kleine Kältehilfe - Hand in Hand e.V.
 
-Telefon: +49 174 9117841  
-E-Mail: hand-in-hand@gmx.de
+Pastor-Hein-Str. 4
+66280 Sulzbach
 
-## Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
+Telefon: 0174 9117841
 
-Ingo [Nachname]  
-Stengelstr. 30  
-66117 Saarbrücken
+Email: hand-in-hand@gmx.de
 
-## Haftungsausschluss
+**Vertretungsberechtigte:**
 
-Die Inhalte dieser Seite wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte
-übernehmen wir keine Gewähr. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den
-gesetzlichen Bestimmungen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet,
-übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige
-Tätigkeit hinweisen.
+Vorsitzende: Kerstin Lafontaine  
+Vorsitzende: Petra Therre
 
-## Urheberrecht
+(Aus Datenschutzgründen und basierend auf gängiger Praxis für Vereine in Deutschland verwende ich hier die Adresse des Vereinssitzes für die Vertretungsberechtigten. Laut Quellen wie eRecht24 und ARAG ist dies oft akzeptabel, solange der Verein als solcher erreichbar ist. Eine separate Angabe privater Adressen ist nicht zwingend erforderlich, wenn die Vereinsadresse als Kontakt dient, um Abmahnrisiken zu minimieren. Falls du private Adressen hinzufügen möchtest, lass es mich wissen – aber ich rate, dies nur nach rechtlicher Prüfung zu tun.)
 
-Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Beiträge
-Dritter sind als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb
-der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+Registergericht: Amtsgericht Saarbrücken
+
+Registernummer: [Hier fehlt die genaue VR-Nummer; ich konnte sie in öffentlichen Quellen nicht finden. Kannst du mir die mitteilen?]
+
+**Inhaltlich verantwortlich im Sinne des § 18 Abs. 2 MStV:**
+
+Kerstin Lafontaine
 
