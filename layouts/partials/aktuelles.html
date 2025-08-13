@@ -14,19 +14,7 @@
                         <a href="{{ $p.RelPermalink }}">
                             <img src="{{ $p.Params.image }}" class="news-image img-fluid" alt="">
                         </a>
-                        {{ with $p.Params.categories }}
-                        <div class="news-category-block">
-                            {{ range . }}
-                            {{ with $.Site.GetPage (printf "/categories/%s" (urlize .)) }}
-                            <a href="{{ .RelPermalink }}" class="category-block-link">
-                                {{ .Title }}
-                            </a>
-                            {{ else }}
-                            <span class="category-block-link">{{ . }}</span>
-                            {{ end }}
-                            {{ end }}
-                        </div>
-                        {{ end }}
+                        <!-- Kategorien entfernt -->
                     </div>
 
                     <div class="news-block-info">
@@ -59,14 +47,9 @@
             </div>
 
             <div class="col-lg-4 col-12 mx-auto">
-                <form class="custom-form search-form" action="#" method="get" role="form">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    <button type="submit" class="form-control">
-                        <i class="bi-search"></i>
-                    </button>
-                </form>
+                <!-- Suchfeld entfernt -->
 
-                <h5 class="mt-5 mb-3">Recent news</h5>
+                <h5 class="mb-3">Recent news</h5>
 
                 {{ range $p := first 2 (after 2 $posts) }}
                 <div class="news-block news-block-two-col d-flex mt-4">
@@ -91,24 +74,11 @@
                 </div>
                 {{ end }}
 
-                <div class="category-block d-flex flex-column">
-                    <h5 class="mb-3">Categories</h5>
-                    {{ range $name, $pages := $.Site.Taxonomies.categories }}
-                    {{ $filtered := where $pages "Section" "aktuelles" }}
-                    {{ if gt (len $filtered) 0 }}
-                    {{ with $.Site.GetPage (printf "/categories/%s" $name) }}
-                    <a href="{{ .RelPermalink }}" class="category-block-link">
-                        {{ .Title }}
-                        <span class="badge">{{ len $filtered }}</span>
-                    </a>
-                    {{ end }}
-                    {{ end }}
-                    {{ end }}
-                </div>
+                <!-- Kategorie-Block entfernt -->
 
                 {{ $tagged := false }}
                 <div class="tags-block">
-                    <h5 class="mb-3">Tags</h5>
+                    <h5 class="mt-5 mb-3">Tags</h5>
                     {{ range $name, $pages := $.Site.Taxonomies.tags }}
                     {{ $filtered := where $pages "Section" "aktuelles" }}
                     {{ if gt (len $filtered) 0 }}

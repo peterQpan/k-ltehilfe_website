@@ -3,7 +3,7 @@ title: "Medizinische Hilfe für Bedürftige"
 date: 2024-10-16
 description: "Ärztliche Versorgung wurde auf der Straße angeboten."
 image: "/images/news/africa-humanitarian-aid-doctor.jpg"
-categories: ["Gesundheit", "Hilfe"]
+tags: ["medizinische Hilfe", "Straßenmedizin", "Bedürftige", "ehrenamtlich", "Gesundheitsversorgung"]
 draft: false
 ---
 
