@@ -17,9 +17,16 @@
                         {{ with $p.Params.categories }}
                         <div class="news-category-block">
                             {{ range . }}
-                            <a href="#" class="category-block-link">
-                                {{ . }}
-                            </a>
+                            {{ $term := . }}
+                            {{ $termPage := $p.Site.GetPage (printf "/categories/%s" (urlize $term)) }}
+                            {{ if and $termPage (eq (len $termPage.Pages) 1) }}
+                            {{ $single := index $termPage.Pages 0 }}
+                            <a href="{{ $single.RelPermalink }}" class="category-block-link">{{ $term }}</a>
+                            {{ else if $termPage }}
+                            <a href="{{ $termPage.RelPermalink }}" class="category-block-link">{{ $term }}</a>
+                            {{ else }}
+                            <a href="{{ (printf "/categories/%s" (urlize $term)) | relLangURL }}" class="category-block-link">{{ $term }}</a>
+                            {{ end }}
                             {{ end }}
                         </div>
                         {{ end }}
