@@ -1,0 +1,15 @@
+{{ define "main" }}
+<section class="section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.image }}
+        <img src="{{ . }}" class="img-fluid my-4" alt="">
+        {{ end }}
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
