@@ -1,0 +1,37 @@
+<section class="testimonial-section section-padding section-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mx-auto">
+        <h2 class="mb-lg-3 text-center">Instagram</h2>
+        <div id="instagram-feed" class="row justify-content-center"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const username = 'ingoskleinekaeltehilfe';
+    const feed = document.getElementById('instagram-feed');
+    fetch(`https://cors.isomorphic-git.org/https://www.instagram.com/${username}/?__a=1&__d=dis`)
+      .then((response) => response.json())
+      .then((data) => {
+        const items = data?.graphql?.user?.edge_owner_to_timeline_media?.edges || [];
+        items.slice(0, 12).forEach(({ node }) => {
+          const col = document.createElement('div');
+          col.className = 'col-lg-3 col-md-4 col-4 p-1';
+          const link = document.createElement('a');
+          link.href = `https://www.instagram.com/p/${node.shortcode}/`;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          const img = document.createElement('img');
+          img.src = node.thumbnail_src;
+          img.alt = node.accessibility_caption || '';
+          img.className = 'img-fluid w-100';
+          link.appendChild(img);
+          col.appendChild(link);
+          feed.appendChild(col);
+        });
+      })
+      .catch((err) => console.error('Failed to load Instagram feed', err));
+  });
+</script>
