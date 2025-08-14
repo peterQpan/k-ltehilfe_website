@@ -1,0 +1,23 @@
+<section class="testimonial-section section-padding section-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-12 mx-auto text-center">
+        <h2 class="mb-lg-3">Instagram</h2>
+        <div id="instafeed" class="row g-2 justify-content-center"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/instafeed.js@2"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var feed = new Instafeed({
+      accessToken: '{{ with .Site.Params.instagram.accessToken }}{{ . }}{{ end }}',
+      limit: {{ with .Site.Params.instagram.limit }}{{ . }}{{ else }}9{{ end }},
+      target: 'instafeed',
+      template: '<div class="col-4 col-md-3"><a href="{{"{{link}}"}}" target="_blank" rel="noopener"><img class="img-fluid" src="{{"{{image}}"}}" alt="{{"{{caption}}"}}"/></a></div>'
+    });
+    feed.run();
+  });
+</script>
