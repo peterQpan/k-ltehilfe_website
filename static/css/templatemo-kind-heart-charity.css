@@ -1669,3 +1669,36 @@ blockquote::before {
       width: 80%;
     }
   }
+
+/* Instagram feed styles */
+.instagram-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.instagram-gallery a {
+  flex: 1 0 calc(20% - 0.5rem);
+  max-width: calc(20% - 0.5rem);
+}
+
+.instagram-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .instagram-gallery a {
+    flex: 1 0 calc(33.333% - 0.5rem);
+    max-width: calc(33.333% - 0.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .instagram-gallery a {
+    flex: 1 0 calc(50% - 0.5rem);
+    max-width: calc(50% - 0.5rem);
+  }
+}
+
