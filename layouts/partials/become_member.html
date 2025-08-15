@@ -9,30 +9,18 @@
                     <h3 class="mb-4">Werde heute ehrenamtlich tätig</h3>
 
                     <div class="row">
-                        <div class="col-lg-6 col-12">
-                            <input type="text" name="volunteer-name" id="volunteer-name" class="form-control" placeholder="Max Mustermann" required>
+                        <div class="col-12">
+                            <input type="text" name="volunteer-name" id="volunteer-name" class="form-control mb-3" placeholder="Max Mustermann" required>
+                        </div>
+                        <div class="col-12">
+                            <input type="email" name="volunteer-email" id="volunteer-email" pattern="[^ @]*@[^ @]*" class="form-control mb-3" placeholder="max@example.de" required>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" name="volunteer-subject" id="volunteer-subject" class="form-control mb-3" placeholder="Betreff" value="Ich möchte mithelfen!" required>
                         </div>
 
-                        <div class="col-lg-6 col-12">    
-                            <input type="email" name="volunteer-email" id="volunteer-email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="max@example.de" required>
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <input type="text" name="volunteer-subject" id="volunteer-subject" class="form-control" placeholder="Betreff" required>
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <div class="input-group input-group-file">
-                                <input type="file" class="form-control" id="inputGroupFile02">
-                                
-                                <label class="input-group-text" for="inputGroupFile02">Lade deinen Lebenslauf hoch</label>
-
-                                <i class="bi-cloud-arrow-up ms-auto"></i>
-                            </div>
-                        </div>
                     </div>
 
-                    <textarea name="volunteer-message" rows="3" class="form-control" id="volunteer-message" placeholder="Kommentar (optional)"></textarea>
 
                     <button type="submit" class="form-control">Absenden</button>
                 </form>
