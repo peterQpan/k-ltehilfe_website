@@ -1,37 +1,35 @@
-import argparse
+#!/usr/bin/env python3
 import os
+import json
 import requests
 
+def fetch_instagram_images(username, limit=5, outdir="bilder"):
+    """
+    Lädt bis zu `limit` Bilder eines öffentlichen Instagram-Kontos herunter.
+    Verwendet den aktuellen inoffiziellen API-Endpunkt (2025-kompatibel).
+    """
+    url = f"https://i.instagram.com/api/v1/users/web_profile_info/?username={username}"
+    headers = {
+        "x-ig-app-id": "936619743392459",  # Feste Instagram-Web-App-ID (erforderlich)
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Accept": "*/*",
+    }
+    r = requests.get(url, headers=headers)
+    r.raise_for_status()  # Fehler werfen, wenn Request fehlschlägt
 
-def fetch_instagram_images(username: str, dest_folder: str = "instagram_images", limit: int = 12) -> None:
-    """Download the latest images from a public Instagram profile."""
-    headers = {"User-Agent": "Mozilla/5.0"}
-    url = f"https://www.instagram.com/{username}/?__a=1&__d=dis"
-    response = requests.get(url, headers=headers, timeout=10)
-    response.raise_for_status()
-    data = response.json()
+    data = r.json()
+    edges = data["data"]["user"]["edge_owner_to_timeline_media"]["edges"]
 
-    edges = data["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"]
+    urls = []
 
-    os.makedirs(dest_folder, exist_ok=True)
-    for edge in edges[:limit]:
-        display_url = edge["node"]["display_url"]
-        img_response = requests.get(display_url, headers=headers, timeout=10)
-        img_response.raise_for_status()
-        filename = os.path.join(dest_folder, display_url.split("?")[0].split("/")[-1])
-        with open(filename, "wb") as f:
-            f.write(img_response.content)
-        print(f"saved {filename}")
+    for idx, edge in enumerate(edges[:limit]):
+        img_url = edge["node"]["display_url"]
+        urls.append(img_url)
 
-
-def main() -> None:
-    parser = argparse.ArgumentParser(description="Download images from an Instagram feed")
-    parser.add_argument("username", help="Instagram username")
-    parser.add_argument("--dest", default="instagram_images", help="Directory to store images")
-    parser.add_argument("--limit", type=int, default=12, help="Number of images to download")
-    args = parser.parse_args()
-    fetch_instagram_images(args.username, args.dest, args.limit)
-
+    return urls
 
 if __name__ == "__main__":
-    main()
+    urls = fetch_instagram_images("ingoskleinekaeltehilfe", limit=15)
+    print(json.dumps(urls, indent=2))

@@ -10,28 +10,46 @@
 </section>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const username = 'ingoskleinekaeltehilfe';
     const feed = document.getElementById('instagram-feed');
-    fetch(`https://cors.isomorphic-git.org/https://www.instagram.com/${username}/?__a=1&__d=dis`)
+    fetch('/instagram.php')
       .then((response) => response.json())
-      .then((data) => {
-        const items = data?.graphql?.user?.edge_owner_to_timeline_media?.edges || [];
-        items.slice(0, 12).forEach(({ node }) => {
+      .then((urls) => {
+        urls.slice(0, 12).forEach((imgUrl) => {
           const col = document.createElement('div');
-          col.className = 'col-lg-3 col-md-4 col-4 p-1';
-          const link = document.createElement('a');
-          link.href = `https://www.instagram.com/p/${node.shortcode}/`;
-          link.target = '_blank';
-          link.rel = 'noopener';
+          col.className = 'col-lg-3 col-md-4 col-6 p-2';
+          
           const img = document.createElement('img');
-          img.src = node.thumbnail_src;
-          img.alt = node.accessibility_caption || '';
-          img.className = 'img-fluid w-100';
-          link.appendChild(img);
-          col.appendChild(link);
+          // Verwende den Image-Proxy um CORS-Probleme zu umgehen
+          img.src = '/image_proxy.php?url=' + encodeURIComponent(imgUrl);
+          img.alt = 'Instagram Post von Ingos kleine Kältehilfe';
+          img.className = 'img-fluid rounded shadow-sm instagram-img';
+          img.style.cursor = 'pointer';
+          img.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+          
+          // Hover-Effekt
+          img.addEventListener('mouseenter', function() {
+            img.style.transform = 'scale(1.05)';
+            img.style.boxShadow = '0 8px 25px rgba(0,0,0,0.3)';
+          });
+          
+          img.addEventListener('mouseleave', function() {
+            img.style.transform = 'scale(1)';
+            img.style.boxShadow = '';
+          });
+          
+          // Optional: Klick öffnet Instagram-Post (falls gewünscht)
+          img.addEventListener('click', function() {
+            window.open('https://instagram.com/ingoskleinekaeltehilfe', '_blank');
+          });
+          
+          col.appendChild(img);
           feed.appendChild(col);
         });
       })
-      .catch((err) => console.error('Failed to load Instagram feed', err));
+      .catch((err) => {
+        console.error('Failed to load Instagram images', err);
+        // Fallback-Nachricht falls API nicht funktioniert
+        feed.innerHTML = '<div class="col-12 text-center"><p class="text-muted">Instagram-Bilder konnten nicht geladen werden.</p></div>';
+      });
   });
 </script>
