@@ -19,10 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     // Mithelfen-Formular
     elseif (isset($_POST['volunteer-name'])) {
-        $message .= "Name: " . ($_POST['volunteer-name'] ?? '') . "\n";
-        $message .= "E-Mail: " . ($_POST['volunteer-email'] ?? '') . "\n";
-        $message .= "Betreff: " . ($_POST['volunteer-subject'] ?? '') . "\n";
-        $message .= "Kommentar: " . ($_POST['volunteer-message'] ?? '') . "\n";
+    $message .= "Name: " . ($_POST['volunteer-name'] ?? '') . "\n";
+    $message .= "E-Mail: " . ($_POST['volunteer-email'] ?? '') . "\n";
+    $message .= "Betreff: " . ($_POST['volunteer-subject'] ?? '') . "\n";
     }
     // Newsletter-Formular
     elseif (isset($_POST['subscribe-email'])) {
