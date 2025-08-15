@@ -1,4 +1,5 @@
 .hugo_build.lock
 public/
 *.zip
-.venv/
+.venv
+__pycache__/
