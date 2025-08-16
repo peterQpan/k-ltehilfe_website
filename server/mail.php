@@ -4,10 +4,10 @@ error_reporting(E_ALL);
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $to = "guggu@hotelheldenplatz.com"; // <--- ANPASSEN
+    $to = "info@ingos-kleine-kältehilfe.de"; // <--- ANGEPASST AUF STRATO SERVER
     $subject = "Formular-Eingang";
     $message = "Neue Nachricht vom Webformular:\n\n";
-    $headers = "From: info@aktuell.hotelheldenplatz.com";
+    $headers = "From: info@ingos-kleine-kältehilfe.de";
 
 
     // Kontaktformular

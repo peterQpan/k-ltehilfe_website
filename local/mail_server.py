@@ -3,11 +3,11 @@ from flask_mail import Mail, Message
 
 app = Flask(__name__)
 
-# Konfiguration für Mailserver (z.B. Gmail SMTP)
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+# Konfiguration für Strato Mailserver
+app.config['MAIL_SERVER'] = 'smtp.strato.de'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'deine@email.de'  # <--- ANPASSEN
+app.config['MAIL_USERNAME'] = 'info@ingos-kleine-kältehilfe.de'  # <--- ANGEPASST
 app.config['MAIL_PASSWORD'] = 'dein_passwort'   # <--- ANPASSEN
 
 mail = Mail(app)
@@ -17,7 +17,7 @@ def sendmail():
     name = request.form.get('name')
     email = request.form.get('email')
     message = request.form.get('message')
-    msg = Message('Kontaktformular', sender=email, recipients=['deine@email.de'])
+    msg = Message('Kontaktformular', sender=email, recipients=['info@ingos-kleine-kältehilfe.de'])
     msg.body = f"Name: {name}\nE-Mail: {email}\nNachricht: {message}"
     mail.send(msg)
     return redirect('/danke.html')  # oder eine Bestätigungsseite
