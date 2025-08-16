@@ -719,7 +719,7 @@ strong {
 }
 
 .volunteer-image {
-  border-radius: 100%;
+  border-radius: 20%;
   display: block;
   margin: auto;
   width: 300px;
