@@ -29,3 +29,17 @@ Registernummer: [Hier fehlt die genaue VR-Nummer; ich konnte sie in öffentliche
 
 Kerstin Lafontaine
 
+## Spendenkonten
+
+**Spendenkonto Volksbank:**  
+Hand in Hand e.V.  
+Vereinigte Volksbank eG  
+IBAN: DE30 5909 2000 8073 7500 09  
+BIC: GENODE51SB2
+
+**Spendenkonto Sparkasse:**  
+Ingos kleine Kältehilfe - Hand in Hand e.V.  
+Sparkasse Saarbrücken  
+IBAN: DE11 5905 0101 0067 0935 59  
+BIC: SAKSDE55XXX
+
