@@ -8,64 +8,64 @@
 
                         <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                             <div class="custom-block-wrap">
-                                <img src="images/causes/group-african-kids-paying-attention-class.jpg" class="custom-block-image img-fluid" alt="">
-
+                                <div class="slideshow-block" id="slideshow-karte1" style="position:relative;min-height:220px;">
+                                    {{ $karte1 := (readDir "static/images/projekte/karte1") }}
+                                    {{ range $i, $img := $karte1 }}
+                                        <img src="/images/projekte/karte1/{{ $img.Name }}" class="custom-block-image img-fluid slideshow-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s;" alt="Karte 1 Bild {{ add $i 1 }}">
+                                    {{ end }}
+                                </div>
                                 <div class="custom-block">
                                     <div class="custom-block-body">
                                       <h5 class="mb-3">Warme Mahlzeiten</h5>
-
                                       <p>Maximale Kapazität: 120 Portionen/Tag<br>Highscore: 108 Portionen/Tag</p>
-
                                           <div class="progress mt-4">
                                               <div class="progress-bar bg-danger" style="width: 90%" role="progressbar" aria-valuenow="108" aria-valuemin="0" aria-valuemax="120">108 / 120</div>
                                           </div>
-
                                           <div class="d-flex align-items-center my-2">
                                               <p class="mb-0">
                                                   <strong>Highscore:</strong>
                                                   108 Portionen/Tag
                                               </p>
-
                                               <p class="ms-auto mb-0">
                                                   <strong>Maximal möglich:</strong>
                                                   120 Portionen/Tag
                                               </p>
                                           </div>
                                     </div>
-
-                                    <!-- Button entfernt -->
                                 </div>
                             </div>
                         </div>
 
                             <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                                 <div class="custom-block-wrap">
-                                    <img src="images/causes/poor-child-landfill-looks-forward-with-hope.jpg" class="custom-block-image img-fluid" alt="">
-
+                                    <div class="slideshow-block" id="slideshow-karte2" style="position:relative;min-height:220px;">
+                                        {{ $karte2 := (readDir "static/images/projekte/karte2") }}
+                                        {{ range $i, $img := $karte2 }}
+                                            <img src="/images/projekte/karte2/{{ $img.Name }}" class="custom-block-image img-fluid slideshow-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s;" alt="Karte 2 Bild {{ add $i 1 }}">
+                                        {{ end }}
+                                    </div>
                                     <div class="custom-block">
                                         <div class="custom-block-body">
                                               <h5 class="mb-3">Treffpunkt & Beratung</h5>
-
                                               <p>Gemeinsam essen und quatschen und wenn nötig ein offenes Ohr vom Team.</p>
                                         </div>
-
-                                        <!-- Button entfernt -->
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                                 <div class="custom-block-wrap">
-                                    <img src="images/causes/african-woman-pouring-water-recipient-outdoors.jpg" class="custom-block-image img-fluid" alt="">
-
+                                    <div class="slideshow-block" id="slideshow-karte3" style="position:relative;min-height:220px;">
+                                        {{ $karte3 := (readDir "static/images/projekte/karte3") }}
+                                        {{ range $i, $img := $karte3 }}
+                                            <img src="/images/projekte/karte3/{{ $img.Name }}" class="custom-block-image img-fluid slideshow-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s;" alt="Karte 3 Bild {{ add $i 1 }}">
+                                        {{ end }}
+                                    </div>
                                     <div class="custom-block">
                                         <div class="custom-block-body">
                                               <h5 class="mb-3">Brotzeittüte to Go</h5>
-
                                               <p>Um die Nacht besser zu überstehen gibt's noch eine Brotzeittüte beim Rausgehen.</p>
                                         </div>
-
-                                        <!-- Button entfernt -->
                                     </div>
                                 </div>
                             </div>
@@ -91,5 +91,55 @@
                             <a href="/donate/" class="custom-btn btn" style="font-size: 120%; padding: 1em 2em;">Jetzt spenden</a>
                         </div>
                     </div>
+                    <script>
+                    // Slideshow für Karte 1
+                    (function() {
+                        const slides = document.querySelectorAll('#slideshow-karte1 .slideshow-img');
+                        if (slides.length > 0) {
+                            slides[0].style.opacity = 1;
+                            slides[0].style.filter = 'blur(0px)';
+                        }
+                        let idx = 0;
+                        setInterval(() => {
+                            slides[idx].style.opacity = 0;
+                            slides[idx].style.filter = 'blur(8px)';
+                            idx = (idx + 1) % slides.length;
+                            slides[idx].style.opacity = 1;
+                            slides[idx].style.filter = 'blur(0px)';
+                        }, 3500);
+                    })();
+                    // Slideshow für Karte 2
+                    (function() {
+                        const slides = document.querySelectorAll('#slideshow-karte2 .slideshow-img');
+                        if (slides.length > 0) {
+                            slides[0].style.opacity = 1;
+                            slides[0].style.filter = 'blur(0px)';
+                        }
+                        let idx = 0;
+                        setInterval(() => {
+                            slides[idx].style.opacity = 0;
+                            slides[idx].style.filter = 'blur(8px)';
+                            idx = (idx + 1) % slides.length;
+                            slides[idx].style.opacity = 1;
+                            slides[idx].style.filter = 'blur(0px)';
+                        }, 3500);
+                    })();
+                    // Slideshow für Karte 3
+                    (function() {
+                        const slides = document.querySelectorAll('#slideshow-karte3 .slideshow-img');
+                        if (slides.length > 0) {
+                            slides[0].style.opacity = 1;
+                            slides[0].style.filter = 'blur(0px)';
+                        }
+                        let idx = 0;
+                        setInterval(() => {
+                            slides[idx].style.opacity = 0;
+                            slides[idx].style.filter = 'blur(8px)';
+                            idx = (idx + 1) % slides.length;
+                            slides[idx].style.opacity = 1;
+                            slides[idx].style.filter = 'blur(0px)';
+                        }, 3500);
+                    })();
+                    </script>
                 </div>
             </section>
