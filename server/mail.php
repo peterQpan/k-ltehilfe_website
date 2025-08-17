@@ -11,9 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // Kontaktformular
-    if (isset($_POST['first-name']) || isset($_POST['last-name'])) {
+    if (isset($_POST['first-name'])) {
         $message .= "Vorname: " . ($_POST['first-name'] ?? '') . "\n";
-        $message .= "Nachname: " . ($_POST['last-name'] ?? '') . "\n";
         $message .= "E-Mail: " . ($_POST['email'] ?? '') . "\n";
         $message .= "Nachricht: " . ($_POST['message'] ?? '') . "\n";
     }

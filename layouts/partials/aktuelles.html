@@ -102,6 +102,35 @@
                         <button type="submit" class="form-control">Subscribe</button>
                     </div>
                 </form>
+                <div id="newsletterOverlay" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(76,175,80,0.95);z-index:9999;align-items:center;justify-content:center;text-align:center;">
+                    <div style="margin:auto;padding:2em;background:#fff;border-radius:10px;max-width:400px;box-shadow:0 2px 8px rgba(0,0,0,0.2);color:#333;">
+                        <h4 style="color:#4caf50;">Newsletter-Anmeldung erfolgreich!</h4>
+                        <p>Vielen Dank für dein Interesse. Wir halten dich auf dem Laufenden!</p>
+                        <button onclick="document.getElementById('newsletterOverlay').style.display='none'" class="form-control" style="background:#4caf50;color:#fff;">Schließen</button>
+                    </div>
+                </div>
+                <script>
+                document.querySelector('.subscribe-form').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const form = e.target;
+                    const data = new FormData(form);
+                    fetch('/mail.php', {
+                        method: 'POST',
+                        body: data
+                    })
+                    .then(response => {
+                        if (!response.ok) throw new Error('Network response was not ok');
+                        return response.text();
+                    })
+                    .then(() => {
+                        document.getElementById('newsletterOverlay').style.display = 'flex';
+                        form.reset();
+                    })
+                    .catch(() => {
+                        alert('Fehler beim Senden. Bitte versuche es später erneut.');
+                    });
+                });
+                </script>
             </div>
 
         </div>
