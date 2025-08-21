@@ -17,6 +17,6 @@ $opts = array('http' =>
 );
 
 $context  = stream_context_create($opts);
-$result = file_get_contents('http://localhost/mail.php', false, $context);
+$result = file_get_contents('http://localhost/mail_secure.php', false, $context);
 echo $result;
 ?>
