@@ -8,6 +8,7 @@ description: "Angaben gemäß § 5 TMG für Ingos kleine Kältehilfe – Hand in
 Ingos kleine Kältehilfe - Hand in Hand e.V.
 
 Pastor-Hein-Str. 4
+
 66280 Sulzbach
 
 Telefon: 0174 9117841

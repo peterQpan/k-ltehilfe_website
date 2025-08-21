@@ -3,3 +3,8 @@ public/
 *.zip
 .venv
 __pycache__/
+
+# Umgebungsvariablen (NIEMALS in Git committen!)
+.env
+.env.local
+.env.production
