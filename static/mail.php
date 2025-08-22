@@ -1,6 +1,7 @@
 <?php
 // Simple mail handler for form submissions
 // Sends collected form data to info@ingos-kleine-kaeltehilfe.de
+// alter stand, aber wirkt nicht
 
 header('Content-Type: text/plain; charset=utf-8');
 
