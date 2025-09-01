@@ -22,14 +22,22 @@
         </p>
       </div>
       <div class="col-lg-3 col-12 ms-auto d-lg-block d-none">
-        <ul class="social-icon">
-          <li class="social-icon-item">
-            <a href="https://www.facebook.com/p/Ingos-kleine-K%C3%A4ltehilfe-100064428263297/" class="social-icon-link bi-facebook"></a>
-          </li>
-          <li class="social-icon-item">
-            <a href="https://www.instagram.com/ingoskleinekaeltehilfe/" class="social-icon-link bi-instagram"></a>
-          </li>
-        </ul>
+        <div class="d-flex justify-content-end mb-2">
+          <ul class="social-icon">
+            <li class="social-icon-item">
+              <a href="https://www.facebook.com/p/Ingos-kleine-K%C3%A4ltehilfe-100064428263297/" class="social-icon-link bi-facebook"></a>
+            </li>
+            <li class="social-icon-item">
+              <a href="https://www.instagram.com/ingoskleinekaeltehilfe/" class="social-icon-link bi-instagram"></a>
+            </li>
+          </ul>
+        </div>
+        <div class="share-buttons text-end">
+          <span class="text-white me-2 d-none d-md-inline">Teilen:</span>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink | urlquery }}" target="_blank" class="btn btn-sm btn-outline-light me-1" title="Auf Facebook teilen"><i class="bi bi-facebook"></i></a>
+          <a href="https://twitter.com/intent/tweet?url={{ .Permalink | urlquery }}&text={{ .Title | urlquery }} - Ingos kleine Kältehilfe" target="_blank" class="btn btn-sm btn-outline-light me-1" title="Auf Twitter teilen"><i class="bi bi-twitter"></i></a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink | urlquery }}&title={{ .Title | urlquery }}" target="_blank" class="btn btn-sm btn-outline-light" title="Auf LinkedIn teilen"><i class="bi bi-linkedin"></i></a>
+        </div>
       </div>
     </div>
   </div>

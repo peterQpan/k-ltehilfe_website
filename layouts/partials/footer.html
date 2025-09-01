@@ -52,9 +52,15 @@
         </div>
         <div class="col-lg-6 col-md-5 col-12 d-flex justify-content-center align-items-center mx-auto">
           <ul class="social-icon">
-            <li class="social-icon-item"><a href="https://www.facebook.com/p/Ingos-kleine-K%C3%A4ltehilfe-100064428263297/" class="social-icon-link bi-facebook"></a></li>
-            <li class="social-icon-item"><a href="https://www.instagram.com/ingoskleinekaeltehilfe/" class="social-icon-link bi-instagram"></a></li>
+            <li class="social-icon-item"><a href="https://www.facebook.com/p/Ingos-kleine-K%C3%A4ltehilfe-100064428263297/" class="social-icon-link bi-facebook" title="Folge uns auf Facebook"></a></li>
+            <li class="social-icon-item"><a href="https://www.instagram.com/ingoskleinekaeltehilfe/" class="social-icon-link bi-instagram" title="Folge uns auf Instagram"></a></li>
           </ul>
+          <div class="share-buttons ms-3">
+            <span class="text-white me-2">Teilen:</span>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink | urlquery }}" target="_blank" class="btn btn-sm btn-outline-light me-1" title="Auf Facebook teilen"><i class="bi bi-facebook"></i></a>
+            <a href="https://twitter.com/intent/tweet?url={{ .Permalink | urlquery }}&text={{ .Title | urlquery }} - Ingos kleine Kältehilfe" target="_blank" class="btn btn-sm btn-outline-light me-1" title="Auf Twitter teilen"><i class="bi bi-twitter"></i></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink | urlquery }}&title={{ .Title | urlquery }}" target="_blank" class="btn btn-sm btn-outline-light" title="Auf LinkedIn teilen"><i class="bi bi-linkedin"></i></a>
+          </div>
         </div>
       </div>
     </div>

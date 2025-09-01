@@ -12,7 +12,7 @@
                 <div class="news-block{{ if gt $i 0 }} mt-3{{ end }}">
                     <div class="news-block-top">
                         <a href="{{ $p.RelPermalink }}">
-                            <img src="{{ $p.Params.image }}" class="news-image img-fluid" alt="">
+                            <img src="{{ $p.Params.image }}" class="news-image img-fluid" alt="{{ $p.Params.alt | default (printf "%s - Ingos Kältehilfe" $p.Title) }}">
                         </a>
                         <!-- Kategorien entfernt -->
                     </div>
@@ -55,7 +55,7 @@
                 <div class="news-block news-block-two-col d-flex mt-4">
                     <div class="news-block-two-col-image-wrap">
                         <a href="{{ $p.RelPermalink }}">
-                            <img src="{{ $p.Params.image }}" class="news-image img-fluid" alt="">
+                            <img src="{{ $p.Params.image }}" class="news-image img-fluid" alt="{{ $p.Params.alt | default (printf "%s - Ingos Kältehilfe" $p.Title) }}">
                         </a>
                     </div>
 

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ingos-kleine-kaeltehilfe-saarbruecken.de/sitemap.xml
