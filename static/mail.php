@@ -1,273 +1,170 @@
 <?php
-/**
- * Konsolidiertes E-Mail-Script für Ingos kleine Kältehilfe
- * Unterstützt: Newsletter, Kontakt und Ehrenamt-Formulare
- * Verwendet PHPMailer mit SMTP-Authentifizierung
- */
+// Server-Mail-Endpunkt (für /mail.php auf dem Server)
+// Diese Datei ist NICHT Teil des Hugo-builds und darf im Server-Deploy unter /mail.php liegen.
 
-// Produktions-optimiertes Error Reporting
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
-ini_set('display_errors', 0);
-ini_set('log_errors', 1);
+declare(strict_types=1);
 
-// Content-Type abhängig von Accept-Header
+error_reporting(E_ALL);
+ini_set('display_errors', '0');
+
 $isJsonRequest = strpos($_SERVER['HTTP_ACCEPT'] ?? '', 'application/json') !== false;
-header('Content-Type: ' . ($isJsonRequest ? 'application/json' : 'text/plain') . '; charset=utf-8');
-
-// Rate Limiting (einfache IP-basierte Implementierung)
-session_start();
-$clientIP = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
-$rateKey = 'mail_rate_' . md5($clientIP);
-$lastRequest = $_SESSION[$rateKey] ?? 0;
-$minInterval = 30; // 30 Sekunden zwischen Anfragen
-
-if (time() - $lastRequest < $minInterval) {
-    http_response_code(429);
-    if ($isJsonRequest) {
-        echo json_encode(['error' => 'Zu viele Anfragen. Bitte warten Sie 30 Sekunden.']);
-    } else {
-        echo 'Zu viele Anfragen. Bitte warten Sie 30 Sekunden.';
-    }
-    exit;
-}
-$_SESSION[$rateKey] = time();
-
-// Logging-Funktion (datenschutzkonform)
-function log_message($message) {
-    $sanitized = preg_replace('/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/', '[EMAIL_REDACTED]', $message);
-    error_log(date('Y-m-d H:i:s') . ' [MAIL] ' . $sanitized);
-}
-
-// Response-Funktion
-function send_response($success, $message, $code = 200) {
+function send_response_s(bool $ok, string $msg, int $code = 200): void
+{
     global $isJsonRequest;
-    http_response_code($success ? 200 : $code);
-    
-    if ($isJsonRequest) {
-        echo json_encode($success ? ['success' => $message] : ['error' => $message]);
-    } else {
-        echo $success ? 'OK' : $message;
-    }
+    http_response_code($ok ? 200 : $code);
+    header('Content-Type: ' . ($isJsonRequest ? 'application/json' : 'text/plain') . '; charset=utf-8');
+    if ($isJsonRequest) echo $ok ? json_encode(['success' => $msg]) : json_encode(['error' => $msg]);
+    else echo $msg;
     exit;
 }
 
-// --- PHPMailer Autoload (erweiterte Pfadsuche) ---
-$autoload_paths = [
-    __DIR__ . '/vendor/autoload.php',
-    __DIR__ . '/../vendor/autoload.php', 
-    dirname(__DIR__) . '/vendor/autoload.php',
-    __DIR__ . '/../../vendor/autoload.php',
-    realpath(__DIR__ . '/../') . '/vendor/autoload.php'
-];
+function get_logs_dir(): string
+{
+    $d = realpath(__DIR__ . '/../logs') ?: (__DIR__ . '/../logs');
+    if (!is_dir($d)) @mkdir($d, 0700, true);
+    return $d;
+}
 
-$autoload_found = false;
-foreach ($autoload_paths as $path) {
-    if (file_exists($path)) {
-        require $path;
-        $autoload_found = true;
-        log_message('Autoload gefunden: ' . basename(dirname($path)));
-        break;
+function write_log_s(string $m): void
+{
+    $f = rtrim(get_logs_dir(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'mail.log';
+    @file_put_contents($f, date('Y-m-d H:i:s') . ' ' . ($_SERVER['REMOTE_ADDR'] ?? '') . ' ' . $m . PHP_EOL, FILE_APPEND | LOCK_EX);
+}
+
+// fixed .env path
+function load_env_server(): array
+{
+    $f = __DIR__ . '/../config/.env';
+    $env = [];
+    if (!is_readable($f)) return $env;
+    foreach (file($f, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+        $line = trim($line);
+        if ($line === '' || $line[0] === '#') continue;
+        if (strpos($line, '=') === false) continue;
+        [$k, $v] = explode('=', $line, 2);
+        $env[trim($k)] = trim(trim($v), "'\"");
     }
+    return $env;
 }
 
-if (!$autoload_found) {
-    log_message('FEHLER: PHPMailer Autoload nicht gefunden');
-    send_response(false, 'Serverfehler: E-Mail-System nicht verfügbar', 500);
+$env = load_env_server();
+write_log_s('env loaded: ' . (empty($env) ? 'no' : 'yes'));
+write_log_s('DEBUG_MODE: ' . ($env['DEBUG_MODE'] ?? 'not set'));
+write_log_s('RATE_LIMIT_MINUTES: ' . ($env['RATE_LIMIT_MINUTES'] ?? 'not set'));
+write_log_s('SMTP_PORT: ' . ($env['SMTP_PORT'] ?? 'not set'));
+write_log_s('SMTP_USERNAME set: ' . (!empty($env['SMTP_USERNAME']) ? 'yes' : 'no'));
+write_log_s('SMTP_PASSWORD set: ' . (!empty($env['SMTP_PASSWORD']) ? 'yes' : 'no'));
+
+// fixed autoload location under public/vendor
+$autoload = __DIR__ . '/../public/vendor/autoload.php';
+if (!file_exists($autoload)) {
+    write_log_s('ERROR: autoload not found at ' . $autoload);
+    send_response_s(false, 'Serverfehler: PHPMailer nicht verfügbar', 500);
 }
+require $autoload;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// --- Environment Variables laden (erweiterte Pfadsuche) ---
-$env_paths = [
-    __DIR__ . '/.env',
-    __DIR__ . '/../.env',
-    dirname(__DIR__) . '/.env',
-    __DIR__ . '/../../.env',
-    realpath(__DIR__ . '/../') . '/.env'
-];
-
-$env_loaded = false;
-foreach ($env_paths as $env_path) {
-    if (file_exists($env_path)) {
-        $lines = file($env_path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        foreach ($lines as $line) {
-            if (strpos($line, '#') === 0 || strpos($line, '=') === false) continue;
-            list($key, $value) = explode('=', $line, 2);
-            $key = trim($key);
-            $value = trim($value, ' "\'');
-            if (!empty($key) && !empty($value)) {
-                $_ENV[$key] = $value;
-            }
-        }
-        log_message('.env geladen');
-        $env_loaded = true;
-        break;
-    }
-}
-
-if (!$env_loaded) {
-    log_message('WARNUNG: .env nicht gefunden');
-}
-
-// --- Konfiguration ---
 $config = [
-    'recipient' => 'info@ingos-kleine-kaeltehilfe-saarbruecken.de',
-    'from_email' => 'info@ingos-kleine-kaeltehilfe-saarbruecken.de',
-    'from_name' => 'Ingos kleine Kältehilfe Website',
-    'smtp_host' => $_ENV['SMTP_HOST'] ?? 'smtp.strato.de',
-    'smtp_port' => (int)($_ENV['SMTP_PORT'] ?? 587),
-    'smtp_user' => $_ENV['SMTP_USER'] ?? 'info@ingos-kleine-kaeltehilfe-saarbruecken.de',
-    'smtp_pass' => $_ENV['SMTP_PASS'] ?? '',
-    'debug' => filter_var($_ENV['MAIL_DEBUG'] ?? false, FILTER_VALIDATE_BOOLEAN)
+    'smtp_host' => $env['SMTP_HOST'] ?? '',
+    'smtp_port' => (int)($env['SMTP_PORT'] ?? 587),
+    'smtp_user' => $env['SMTP_USERNAME'] ?? $env['SMTP_USER'] ?? '',
+    'smtp_pass' => $env['SMTP_PASSWORD'] ?? $env['SMTP_PASS'] ?? '',
+    'from_email' => $env['SMTP_FROM_EMAIL'] ?? $env['FROM_EMAIL'] ?? '',
+    'from_name' => $env['SMTP_FROM_NAME'] ?? $env['FROM_NAME'] ?? 'Website',
+    'recipient' => $env['CONTACT_EMAIL'] ?? $env['TO_EMAIL'] ?? '',
+    'allowed_origin' => $env['ALLOWED_ORIGINS'] ?? '',
+    'rate_minutes' => (int)($env['RATE_LIMIT_MINUTES'] ?? 5),
+    'rate_max' => (int)($env['RATE_LIMIT_MAX_ATTEMPTS'] ?? 3),
 ];
 
-// Validierung der kritischen Konfiguration
-if (empty($config['smtp_pass'])) {
-    log_message('FEHLER: SMTP_PASS nicht konfiguriert');
-    send_response(false, 'Serverfehler: E-Mail-Konfiguration unvollständig', 500);
+if (empty($config['smtp_host']) || empty($config['smtp_user']) || empty($config['smtp_pass']) || empty($config['recipient'])) {
+    write_log_s('ERROR: incomplete config');
+    send_response_s(false, 'Serverfehler: E-Mail-Konfiguration unvollständig', 500);
 }
 
-// --- Request-Validierung ---
-if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
-    log_message('Ungültige HTTP-Methode: ' . ($_SERVER['REQUEST_METHOD'] ?? 'none'));
-    send_response(false, 'Nur POST-Requests erlaubt', 405);
-}
+if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') { write_log_s('METHOD not allowed'); send_response_s(false, 'Nur POST erlaubt', 405); }
 
-// CSRF-Protection (einfache Implementierung)
-$allowedOrigins = [
-    'https://ingos-kleine-kaeltehilfe-saarbruecken.de',
-    'http://localhost',
-    'http://127.0.0.1'
-];
-
-$origin = $_SERVER['HTTP_ORIGIN'] ?? $_SERVER['HTTP_REFERER'] ?? '';
-$originValid = false;
-foreach ($allowedOrigins as $allowed) {
-    if (strpos($origin, $allowed) === 0) {
-        $originValid = true;
-        break;
+// rate limiting
+function check_rate_limit_server(string $ip, int $minutes, int $max): bool
+{
+    $dir = get_logs_dir();
+    $file = rtrim($dir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'ratelimit_' . preg_replace('/[^a-zA-Z0-9_.-]/', '_', $ip) . '.json';
+    $now = time();
+    $window = $minutes * 60;
+    $attempts = [];
+    if (is_readable($file)) {
+        $data = @file_get_contents($file);
+        $attempts = json_decode($data, true) ?: [];
+        $attempts = array_filter($attempts, function ($t) use ($now, $window) { return ($now - (int)$t) <= $window; });
     }
+    if (count($attempts) >= $max) return false;
+    $attempts[] = $now;
+    @file_put_contents($file, json_encode($attempts), LOCK_EX);
+    return true;
 }
 
-if (!$originValid && !empty($origin)) {
-    log_message('CSRF: Unerlaubte Origin: ' . $origin);
-    send_response(false, 'Anfrage von unerlaubter Quelle', 403);
-}
+$ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+if (!check_rate_limit_server($ip, $config['rate_minutes'], $config['rate_max'])) { write_log_s('RATE_LIMIT ' . $ip); send_response_s(false, 'Zu viele Anfragen', 429); }
 
-// --- Eingabe-Bereinigung ---
-function clean($value) {
-    return trim(htmlspecialchars($value ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'));
-}
-
-// --- Formular-Verarbeitung ---
-log_message('Formular-Anfrage empfangen');
+function clean_server(string $v, int $max = 2000): string { return mb_substr(trim(strip_tags($v)), 0, $max); }
 
 $subject = '';
 $body = '';
 $replyTo = '';
-$formType = 'unbekannt';
 
-// 1. Newsletter-Anmeldung
-if (!empty($_POST['subscribe-email'])) {
-    $email = clean($_POST['subscribe-email']);
-    
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        log_message('Newsletter: Ungültige E-Mail-Adresse');
-        send_response(false, 'Ungültige E-Mail-Adresse', 400);
-    }
-    
-    $formType = 'Newsletter';
-    $subject = 'Newsletter-Anmeldung von Website';
-    $body = "Newsletter-Anmeldung\n\n";
-    $body .= "E-Mail: $email\n";
-    $body .= "Anmeldedatum: " . date('d.m.Y H:i:s') . "\n";
-    $body .= "IP-Adresse: " . $clientIP . "\n";
-    $replyTo = $email;
-
-// 2. Ehrenamt-Formular
-} elseif (!empty($_POST['volunteer-name']) && !empty($_POST['volunteer-email'])) {
-    $name = clean($_POST['volunteer-name']);
-    $email = clean($_POST['volunteer-email']);
-    $volunteerSubject = clean($_POST['volunteer-subject'] ?? 'Ehrenamtliche Anfrage');
-    $message = clean($_POST['volunteer-message'] ?? '');
-    
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        send_response(false, 'Ungültige E-Mail-Adresse', 400);
-    }
-    
-    $formType = 'Ehrenamt';
-    $subject = "Ehrenamtliche Anfrage: $volunteerSubject";
-    $body = "Ehrenamtliche Anfrage\n\n";
-    $body .= "Name: $name\n";
-    $body .= "E-Mail: $email\n";
-    $body .= "Betreff: $volunteerSubject\n";
-    if ($message) $body .= "Nachricht:\n$message\n";
-    $body .= "\nEingang: " . date('d.m.Y H:i:s') . "\n";
-    $replyTo = $email;
-
-// 3. Kontakt-Formular
-} elseif (!empty($_POST['first-name']) && !empty($_POST['email'])) {
-    $name = clean($_POST['first-name']);
-    $email = clean($_POST['email']);
-    $message = clean($_POST['message'] ?? '');
-    
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        send_response(false, 'Ungültige E-Mail-Adresse', 400);
-    }
-    
-    $formType = 'Kontakt';
-    $subject = 'Kontaktanfrage von Website';
+if (!empty($_POST['volunteer-name']) || !empty($_POST['volunteer-email'])) {
+    $name = clean_server($_POST['volunteer-name'] ?? '');
+    $email = clean_server($_POST['volunteer-email'] ?? '');
+    $subject = clean_server($_POST['volunteer-subject'] ?? 'Mithelfen');
+    $body = "Mithelfen-Anfrage\n\n";
+    $body .= "Name: $name\nE-Mail: $email\nBetreff: $subject\n";
+    $replyTo = filter_var($email, FILTER_VALIDATE_EMAIL) ? $email : '';
+} elseif (!empty($_POST['first-name']) || !empty($_POST['message'])) {
+    $name = clean_server($_POST['first-name'] ?? '');
+    $email = clean_server($_POST['email'] ?? '');
+    $message = clean_server($_POST['message'] ?? '');
+    $subject = 'Kontaktanfrage';
     $body = "Kontaktanfrage\n\n";
-    $body .= "Name: $name\n";
-    $body .= "E-Mail: $email\n\n";
-    $body .= "Nachricht:\n$message\n";
-    $body .= "\nEingang: " . date('d.m.Y H:i:s') . "\n";
+    $body .= "Name: $name\nE-Mail: $email\n\nNachricht:\n$message\n";
+    $replyTo = filter_var($email, FILTER_VALIDATE_EMAIL) ? $email : '';
+} elseif (!empty($_POST['subscribe-email'])) {
+    $email = clean_server($_POST['subscribe-email']);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { write_log_s('Invalid subscribe ' . $email); send_response_s(false, 'Ungültige E-Mail', 400); }
+    $subject = 'Newsletter-Anmeldung';
+    $body = "Newsletter\n\nE-Mail: $email\n";
     $replyTo = $email;
+} else { write_log_s('Incomplete POST: ' . json_encode(array_keys($_POST))); send_response_s(false, 'Unvollständige Daten', 400); }
 
-} else {
-    log_message('Unvollständige Formulardaten');
-    send_response(false, 'Unvollständige Formulardaten', 400);
-}
+$body .= "\nIP: $ip\nReferer: " . ($_SERVER['HTTP_REFERER'] ?? '') . "\n";
 
-log_message("Formular-Typ: $formType verarbeitet");
-
-// --- E-Mail-Versand ---
 $mail = new PHPMailer(true);
-
 try {
-    // SMTP-Konfiguration
+    $mail->SMTPDebug = 2; // Detaillierte Debug-Ausgabe
+    $mail->Debugoutput = function($str, $level) {
+        write_log_s("SMTP DEBUG [$level]: $str");
+    };
     $mail->isSMTP();
+    $mail->Host = gethostbyname($config['smtp_host']); // IPv4 erzwingen
     $mail->Host = $config['smtp_host'];
     $mail->SMTPAuth = true;
     $mail->Username = $config['smtp_user'];
     $mail->Password = $config['smtp_pass'];
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port = $config['smtp_port'];
-    $mail->SMTPDebug = $config['debug'] ? 2 : 0;
+    $secure = strtolower($env['SMTP_SECURE'] ?? 'ssl');
+    if ($secure === 'ssl') $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; else $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port = (int)$config['smtp_port'];
     $mail->CharSet = 'UTF-8';
-
-    // Absender/Empfänger
     $mail->setFrom($config['from_email'], $config['from_name']);
     $mail->addAddress($config['recipient']);
-    
-    if (!empty($replyTo)) {
-        $mail->addReplyTo($replyTo);
-    }
-
-    // E-Mail-Inhalt
+    if ($replyTo !== '') $mail->addReplyTo($replyTo);
     $mail->isHTML(false);
-    $mail->Subject = $subject;
+    $mail->Subject = mb_substr($subject, 0, 200);
     $mail->Body = $body;
-
-    // Versenden
     $mail->send();
-    
-    log_message("$formType-E-Mail erfolgreich versendet an " . $config['recipient']);
-    send_response(true, ucfirst($formType) . '-Anfrage erfolgreich gesendet');
-
+    write_log_s('Sent to ' . $config['recipient'] . ' subj:' . $subject);
+    send_response_s(true, 'OK', 200);
 } catch (Exception $e) {
-    log_message("FEHLER beim Versand: " . $mail->ErrorInfo);
-    send_response(false, 'E-Mail konnte nicht versendet werden', 500);
+    write_log_s('PHPMailer error: ' . $mail->ErrorInfo . ' ex:' . $e->getMessage());
+    send_response_s(false, 'E-Mail konnte nicht gesendet werden', 500);
 }
-?>
