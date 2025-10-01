@@ -1,0 +1,117 @@
+{{ define "main" }}
+<div class="container section-padding">
+    <div class="row">
+        <div class="col-lg-8 col-12">
+            <div class="news-section">
+                <h2 class="mb-4">
+                    <i class="bi-tag-fill me-2"></i>
+                    Beiträge zum Thema: "{{ .Title }}"
+                </h2>
+                
+                {{ $pages := where .Pages "Section" "aktuelles" }}
+                {{ if $pages }}
+                    {{ range $pages }}
+                    <article class="news-block mb-4">
+                        <div class="news-block-top">
+                            <a href="{{ .RelPermalink }}">
+                                {{ if .Params.image }}
+                                <img src="{{ .Params.image }}" class="news-image img-fluid" alt="{{ .Params.alt | default (printf "%s - Ingos Kältehilfe" .Title) }}">
+                                {{ else }}
+                                <img src="/images/logo.jpeg" class="news-image img-fluid" alt="{{ .Title }} - Ingos Kältehilfe">
+                                {{ end }}
+                            </a>
+                        </div>
+
+                        <div class="news-block-info">
+                            <div class="d-flex mt-2">
+                                <div class="news-block-date">
+                                    <p>
+                                        <i class="bi-calendar4 custom-icon me-1"></i>
+                                        {{ .Date.Format "2. January 2006" }}
+                                    </p>
+                                </div>
+                                <div class="news-block-author mx-5">
+                                    <p>
+                                        <i class="bi-person custom-icon me-1"></i>
+                                        By Admin
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="news-block-title mb-2">
+                                <h4><a href="{{ .RelPermalink }}" class="news-block-title-link">{{ .Title }}</a></h4>
+                            </div>
+
+                            <div class="news-block-body">
+                                <p>{{ .Params.description | default (.Summary | truncate 150) }}</p>
+                            </div>
+
+                            {{ if .Params.tags }}
+                            <div class="news-block-tags mt-2">
+                                {{ range .Params.tags }}
+                                <span class="badge bg-secondary me-1">{{ . }}</span>
+                                {{ end }}
+                            </div>
+                            {{ end }}
+                        </div>
+                    </article>
+                    {{ end }}
+                {{ else }}
+                    <div class="alert alert-info">
+                        <h5>Keine Beiträge gefunden</h5>
+                        <p>Es gibt noch keine Beiträge zu diesem Thema.</p>
+                        <a href="/aktuelles/" class="btn btn-primary">Alle Beiträge ansehen</a>
+                    </div>
+                {{ end }}
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-12">
+            <div class="sidebar">
+                <h5 class="mb-3">Alle Tags</h5>
+                <div class="tags-block">
+                    {{ range $name, $taxonomy := $.Site.Taxonomies.tags }}
+                    {{ $filtered := where $taxonomy "Section" "aktuelles" }}
+                    {{ if gt (len $filtered) 0 }}
+                    {{ with $taxonomy.Page }}
+                    <a href="{{ .RelPermalink }}" class="tags-block-link">
+                        {{ .Title }} ({{ len $filtered }})
+                    </a>
+                    {{ end }}
+                    {{ end }}
+                    {{ end }}
+                </div>
+
+                <div class="mt-4">
+                    <h5 class="mb-3">Neueste Beiträge</h5>
+                    {{ $recentPosts := where .Site.RegularPages "Section" "aktuelles" | first 3 }}
+                    {{ range $recentPosts }}
+                    <div class="news-block news-block-two-col d-flex mt-3">
+                        <div class="news-block-two-col-image-wrap">
+                            <a href="{{ .RelPermalink }}">
+                                {{ if .Params.image }}
+                                <img src="{{ .Params.image }}" class="news-image img-fluid" alt="{{ .Title }}">
+                                {{ else }}
+                                <img src="/images/logo.jpeg" class="news-image img-fluid" alt="{{ .Title }}">
+                                {{ end }}
+                            </a>
+                        </div>
+                        <div class="news-block-two-col-info">
+                            <div class="news-block-title mb-2">
+                                <h6><a href="{{ .RelPermalink }}" class="news-block-title-link">{{ .Title }}</a></h6>
+                            </div>
+                            <div class="news-block-date">
+                                <p>
+                                    <i class="bi-calendar4 custom-icon me-1"></i>
+                                    {{ .Date.Format "2. January 2006" }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}

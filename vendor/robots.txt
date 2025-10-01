@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Disallow: /images/
+
+# Spezielle Regeln für Bildersuchmaschinen - erlauben Bilder-Indexierung
+User-agent: Googlebot-Image
+Disallow: /images/
+
+User-agent: Bingbot
+Disallow: /images/
+
+# XML Sitemap
+Sitemap: {{ .Site.BaseURL }}/sitemap.xml
+
+# Crawl-delay für bessere Server-Performance
+Crawl-delay: 1

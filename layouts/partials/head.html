@@ -1,30 +1,61 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Ingos kleine Kältehilfe bietet Unterstützung für Obdachlose in Saarbrücken. Ehrenamtliche Hilfe, Spenden und soziale Projekte für Bedürftige in Not.">
-  <meta name="keywords" content="Kältehilfe Saarbrücken, Obdachlosenhilfe, Ehrenamt, Spenden, soziale Projekte, Ingos Kältehilfe">
-  <meta name="author" content="Ingos kleine Kältehilfe">
-  <meta name="robots" content="index, follow">
+  {{ if .Description }}
+    <meta name="description" content="{{ .Description }}">
+  {{ else }}
+    <meta name="description" content="{{ .Site.Params.description | default "Ingos kleine Kältehilfe bietet Unterstützung für Obdachlose in Saarbrücken. Ehrenamtliche Hilfe, Spenden und soziale Projekte für Bedürftige in Not." }}">
+  {{ end }}
+  {{ if .Keywords }}
+    <meta name="keywords" content="{{ delimit .Keywords ", " }}">
+  {{ else }}
+    <meta name="keywords" content="{{ .Site.Params.keywords | default "Kältehilfe Saarbrücken, Obdachlosenhilfe, Ehrenamt, Spenden, soziale Projekte, Ingos Kältehilfe" }}">
+  {{ end }}
+  <meta name="author" content="{{ .Site.Params.author | default "Ingos kleine Kältehilfe" }}">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="language" content="de">
+  <meta name="geo.region" content="DE-SL">
+  <meta name="geo.placename" content="Saarbrücken">
+  <meta name="geo.position" content="49.2401572;6.9969327">
+  <meta name="ICBM" content="49.2401572, 6.9969327">
+  
+  <!-- Canonical URL -->
   <link rel="canonical" href="{{ .Permalink }}">
+  
+  <!-- Page Title -->
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="{{ .Title }}">
-  <meta property="og:description" content="Ingos kleine Kältehilfe – Unterstützung für Obdachlose in Saarbrücken.">
+  <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+  <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+  <meta property="og:description" content="{{ .Description | default .Site.Params.description }}">
   <meta property="og:url" content="{{ .Permalink }}">
   <meta property="og:image" content="{{ .Site.BaseURL }}/images/logo.jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="Ingos kleine Kältehilfe">
+  <meta property="og:locale" content="de_DE">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ .Title }}">
-  <meta name="twitter:description" content="Ingos kleine Kältehilfe – Unterstützung für Obdachlose in Saarbrücken.">
+  <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+  <meta name="twitter:description" content="{{ .Description | default .Site.Params.description }}">
   <meta name="twitter:image" content="{{ .Site.BaseURL }}/images/logo.jpeg">
+  <meta name="twitter:site" content="@ingoskaeltehilfe">
 
-  <!-- Favicon -->
-  <link rel="icon" href="/images/logo.jpeg" type="image/jpeg">
+  <!-- Favicon und App Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+  <!-- DNS Prefetch für bessere Performance -->
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
   <!-- Styles -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -39,26 +70,76 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Ingos kleine Kältehilfe",
+    "legalName": "Hand in Hand e.V.",
     "url": "https://ingos-kleine-kaeltehilfe-saarbruecken.de",
     "logo": "https://ingos-kleine-kaeltehilfe-saarbruecken.de/images/logo.jpeg",
     "description": "Ingos kleine Kältehilfe bietet Unterstützung für Obdachlose in Saarbrücken. Ehrenamtliche Hilfe, Spenden und soziale Projekte.",
+    "foundingDate": "2000",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Stengelstr. 30",
       "addressLocality": "Saarbrücken",
       "postalCode": "66117",
-      "addressCountry": "DE"
+      "addressCountry": "DE",
+      "addressRegion": "Saarland"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 49.2401572,
+      "longitude": 6.9969327
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Saarbrücken"
     },
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+49-174-9117841",
       "email": "info@ingos-kleine-kaeltehilfe-saarbruecken.de",
-      "contactType": "customer service"
+      "contactType": "customer service",
+      "areaServed": "DE",
+      "availableLanguage": "German"
     },
     "sameAs": [
       "https://www.facebook.com/ingoskaeltehilfe",
       "https://www.instagram.com/ingoskaeltehilfe"
+    ],
+    "knowsAbout": [
+      "Obdachlosenhilfe",
+      "Kältehilfe", 
+      "Ehrenamt",
+      "Soziale Arbeit",
+      "Spenden",
+      "Saarbrücken"
+    ],
+    "memberOf": {
+      "@type": "Organization",
+      "name": "Hand in Hand e.V."
+    }
+  }
+  </script>
+  
+  <!-- Breadcrumb Structured Data -->
+  {{ if not .IsHome }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Startseite",
+        "item": "{{ .Site.BaseURL }}"
+      },
+      {
+        "@type": "ListItem", 
+        "position": 2,
+        "name": "{{ .Title }}",
+        "item": "{{ .Permalink }}"
+      }
     ]
   }
   </script>
+  {{ end }}
 </head>

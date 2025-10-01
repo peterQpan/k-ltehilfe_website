@@ -1,0 +1,48 @@
+{{ define "main" }}
+<div class="container section-padding">
+    <div class="row">
+        <div class="col-lg-12 col-12">
+            <h2 class="mb-4">
+                <i class="bi-tags-fill me-2"></i>
+                Alle Themen
+            </h2>
+            <p class="lead mb-5">Entdecken Sie unsere Beiträge nach Themen sortiert.</p>
+            
+            <div class="row">
+                {{ range $name, $taxonomy := $.Site.Taxonomies.tags }}
+                {{ $filtered := where $taxonomy "Section" "aktuelles" }}
+                {{ if gt (len $filtered) 0 }}
+                {{ with $taxonomy.Page }}
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{ .RelPermalink }}" class="text-decoration-none">
+                                    <i class="bi-tag-fill me-2"></i>
+                                    {{ .Title }}
+                                </a>
+                            </h5>
+                            <p class="card-text text-muted">
+                                {{ len $filtered }} {{ if eq (len $filtered) 1 }}Beitrag{{ else }}Beiträge{{ end }}
+                            </p>
+                            <a href="{{ .RelPermalink }}" class="btn btn-outline-primary btn-sm">
+                                Beiträge ansehen
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+                {{ end }}
+                {{ end }}
+            </div>
+            
+            <div class="mt-5">
+                <a href="/aktuelles/" class="btn btn-primary">
+                    <i class="bi-arrow-left me-2"></i>
+                    Zurück zu allen Beiträgen
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}

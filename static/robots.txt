@@ -1,4 +1,31 @@
-User-agent: *
-Allow: /
+User-agent: *User-agent: *
 
-Sitemap: https://ingos-kleine-kaeltehilfe-saarbruecken.de/sitemap.xml
+Allow: /Allow: /
+
+Disallow: /images/Disallow: /images/
+
+
+
+# Spezielle Regeln für Bildersuchmaschinen - erlauben Bilder-Indexierung# Spezielle Regeln für Bildersuchmaschinen - erlauben Bilder-Indexierung
+
+User-agent: Googlebot-ImageUser-agent: Googlebot-Image
+
+Allow: /images/Disallow: /images/
+
+
+
+User-agent: BingbotUser-agent: Bingbot
+
+Allow: /images/Disallow: /images/
+
+
+
+# XML Sitemap# XML Sitemap
+
+Sitemap: https://ingos-kleine-kaeltehilfe-saarbruecken.de/sitemap.xmlSitemap: {{ .Site.BaseURL }}/sitemap.xml
+
+
+
+# Crawl-delay für bessere Server-Performance# Crawl-delay für bessere Server-Performance
+
+Crawl-delay: 1Crawl-delay: 1

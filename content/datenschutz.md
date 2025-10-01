@@ -1,4 +1,13 @@
-Datenschutzerklärung
+---
+title: "Datenschutzerklärung - Ingos kleine Kältehilfe"
+description: "Datenschutzerklärung von Ingos kleiner Kältehilfe Saarbrücken. Informationen über Datenverarbeitung, Cookies und Ihre Rechte gemäß DSGVO."
+keywords: ["Datenschutz", "DSGVO", "Datenschutzerklärung", "Privatsphäre", "Kältehilfe"]
+type: "page"
+layout: "single"
+robots: "index, follow"
+---
+
+# Datenschutzerklärung
 
 
 1. Einleitung

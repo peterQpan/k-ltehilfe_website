@@ -1,6 +1,10 @@
 ---
-title: "Impressum"
-description: "Angaben gemäß § 5 TMG für Ingos kleine Kältehilfe – Hand in Hand e.V."
+title: "Impressum - Ingos kleine Kältehilfe"
+description: "Angaben gemäß § 5 TMG für Ingos kleine Kältehilfe – Hand in Hand e.V. Kontaktdaten und rechtliche Informationen."
+keywords: ["Impressum", "Kontakt", "Hand in Hand e.V.", "Kältehilfe", "Saarbrücken"]
+type: "page"
+layout: "single"
+robots: "index, follow"
 ---
 
 # Impressum

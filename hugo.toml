@@ -1,7 +1,57 @@
 baseURL = 'https://ingos-kleine-kaeltehilfe-saarbruecken.de'
 languageCode = 'de-de'
 title = 'Ingos kleine Kältehilfe – Hand in Hand e.V.'
+enableRobotsTXT = true
+enableEmoji = true
+
+# URL-Konfiguration für bessere Tag-URLs
+removePathAccents = true
+disablePathToLower = false
+
+# Taxonomy-Konfiguration
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[permalinks]
+  tags = "/tags/:slug/"
+  categories = "/categories/:slug/"
+
+# SEO Optimierungen
+[params]
+  description = "Ingos kleine Kältehilfe bietet Unterstützung für Obdachlose in Saarbrücken. Ehrenamtliche Hilfe, Spenden und soziale Projekte für Bedürftige in Not."
+  keywords = "Kältehilfe Saarbrücken, Obdachlosenhilfe, Ehrenamt, Spenden, soziale Projekte, Lafontaine, Lafontaine Saarbrücken, Ingos Kältehilfe, Spenden für Bedürftige, Hilfe für Obdachlose, Menschen in Not, Ehrenamtliche Unterstützung, Soziale Projekte Saarbrücken, Kältehilfe Initiative, Unterstützung für Arme, Spendenaktionen, Hilfsorganisation, Menschenhilfe, Notfallhilfe, Winterhilfe, Obdachlosenunterstützung, Soziale Arbeit, Gemeinschaftshilfe, Spenden sammeln, Hilfe leisten, Menschen unterstützen, Bedürftige helfen, Ehrenamtliches Engagement, Soziale Verantwortung, Hilfsprojekte, Spendenkampagnen, Unterstützung für Schwache, Menschenrechte, Soziale Gerechtigkeit, Hilfe für Alle, Spenden für Kältehilfe, Obdachlosenhilfe Saarbrücken, Ehrenamtliche Helfer, Soziale Netzwerke, Hilfsangebote, Menschen in Bedrängnis, Notunterstützung, Winterunterstützung, Obdachlosenbetreuung, Soziale Dienste, Gemeinschaftsunterstützung, Spendenaufrufe, Hilfe für Bedürftige, Menschenhilfe Saarbrücken, Notfallunterstützung, Kältehilfe Projekte, Obdachlosenhilfe Initiative, Ehrenamtliche Arbeit, Soziale Projekte, Hilfsorganisationen, Spenden für Menschen, Hilfe für Menschen, Unterstützung für Menschen"
+  author = "Ingos kleine Kältehilfe, Sebastian Müller, Hand in Hand .eV, Petra Therre, Lafontaine"
+
+# RSS/XML Feed Konfiguration
+[services]
+  [services.rss]
+    limit = 20  # Anzahl der Artikel im RSS-Feed
+
+# Sitemap Konfiguration
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+# Minifizierung für bessere Performance
+[minify]
+  [minify.tdewolff]
+    [minify.tdewolff.html]
+      keepDocumentTags = true
+      keepEndTags = true
+      keepDefaultAttrVals = true
+      keepWhitespace = false
+    [minify.tdewolff.css]
+      keepCSS2 = true
+      precision = 0
+    [minify.tdewolff.js]
+      keepVarNames = false
+      precision = 0
 
 [markup]
   [markup.goldmark.renderer]
     unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3

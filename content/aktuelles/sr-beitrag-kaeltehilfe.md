@@ -16,4 +16,4 @@ Der Saarländische Rundfunk (SR) hat einen Beitrag über die Arbeit von Ingos kl
 
 Die Reportage gibt Einblicke in die täglichen Herausforderungen, die Organisation und die Motivation der Helferinnen und Helfer. Besonders hervorgehoben wird die Bedeutung von Spenden und ehrenamtlicher Unterstützung für die erfolgreiche Arbeit des Vereins.
 
-*Hinweis: Das Beitragsbild stammt vom SR und zeigt eine Szene aus dem Video.*
+*Hinweis: Das Beitragsbild zeigt eine Szene aus dem Video.*

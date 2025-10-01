@@ -1,0 +1,13 @@
+{{ define "main" }}
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <h1 class="display-1">404</h1>
+      <h2>Seite nicht gefunden</h2>
+      <p class="lead">Die angeforderte Seite konnte leider nicht gefunden werden.</p>
+      <p>Möglicherweise wurde die Seite verschoben oder der Link ist veraltet.</p>
+      <a href="{{ .Site.BaseURL }}" class="btn btn-primary">Zur Startseite</a>
+    </div>
+  </div>
+</div>
+{{ end }}
