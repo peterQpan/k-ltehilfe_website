@@ -24,7 +24,6 @@ Email: hand-in-hand@gmx.de
 Vorsitzende: Kerstin Lafontaine  
 Vorsitzende: Petra Therre
 
-(Aus Datenschutzgründen und basierend auf gängiger Praxis für Vereine in Deutschland verwende ich hier die Adresse des Vereinssitzes für die Vertretungsberechtigten. Laut Quellen wie eRecht24 und ARAG ist dies oft akzeptabel, solange der Verein als solcher erreichbar ist. Eine separate Angabe privater Adressen ist nicht zwingend erforderlich, wenn die Vereinsadresse als Kontakt dient, um Abmahnrisiken zu minimieren. Falls du private Adressen hinzufügen möchtest, lass es mich wissen – aber ich rate, dies nur nach rechtlicher Prüfung zu tun.)
 
 Registergericht: Amtsgericht Saarbrücken
 
