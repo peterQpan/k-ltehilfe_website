@@ -736,6 +736,8 @@ strong {
 
 .volunteer-section .custom-block-body p {
   line-height: 1.7;
+  position: relative;
+  z-index: 1;
 }
 
 
@@ -1671,3 +1673,30 @@ blockquote::before {
       width: 80%;
     }
   }
+
+#video_section {
+  position: relative;
+  overflow: hidden;
+}
+
+#video_section::after {
+  content: "";
+  background: var(--third-color);
+  border-radius: 50%;
+  position: absolute;
+  bottom: -110px;
+  right: -80px;
+  width: 350px;
+  height: 350px;
+}
+
+#video_section::before {
+  content: "";
+  background: #feae01;
+  border-radius: 50%;
+  position: absolute;
+  top: -110px;
+  left: -80px;
+  width: 350px;
+  height: 350px;
+}
