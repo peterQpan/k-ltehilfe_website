@@ -27,8 +27,6 @@ Vorsitzende: Petra Therre
 
 Registergericht: Amtsgericht Saarbrücken
 
-Registernummer: [Hier fehlt die genaue VR-Nummer; ich konnte sie in öffentlichen Quellen nicht finden. Kannst du mir die mitteilen?]
-
 **Inhaltlich verantwortlich im Sinne des § 18 Abs. 2 MStV:**
 
 Kerstin Lafontaine

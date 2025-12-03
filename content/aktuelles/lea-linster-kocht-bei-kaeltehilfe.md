@@ -2,6 +2,8 @@
 title: "Spitzenköchin Léa Linster kocht bei der Kältehilfe"
 date: 2025-12-03
 description: "Die renommierte Spitzenköchin Léa Linster brachte ihre kulinarischen Fähigkeiten in die Kältehilfe ein und kochte für die Bedürftigen – ein besonderes Highlight der ehrenamtlichen Arbeit."
+image: "/images/news/star_kochen/591736162_1269686991855564_133640767235307061_n.jpg"
+hideImage: true
 tags: ["Kochen", "Spitzenköchin", "Kältehilfe", "Ehrenamt", "Solidarität", "Saarbrücken", "Léa Linster"]
 draft: false
 ---
@@ -64,7 +66,7 @@ Hinter den Kulissen war die Atmosphäre geprägt von Teamgeist und Hingabe. Léa
 
 ## Behind the Scenes
 
-Die Bilder zeigen die lebendige Szene: Léa Linster am Herd, das Team beim Vorbereiten, der SR beim filmen und die Freude am gemeinsamen Erlebnis. Es war ein Tag, der zeigte, dass auch höchste kulinarische Expertise und soziales Engagement Hand in Hand gehen können.
+Die Bilder zeigen die lebendige Szene: Léa Linster am Herd, das Team beim Vorbereiten, der SR beim Filmen und die Freude am gemeinsamen Erlebnis. Es war ein Tag, der zeigte, dass auch höchste kulinarische Expertise und soziales Engagement Hand in Hand gehen können.
 
 Wer mehr über dieses besondere Event erfahren möchte, kann den Artikel der Saarbrücker Zeitung lesen: 
 

@@ -133,3 +133,21 @@ $space-4: 1rem;
 * **Falsche Pfade** (`static/` vs `assets/`) → SCSS gehört in `assets/`, nicht `static/`. ([gohugo.io][3])
 * **Zerlegte Reihenfolge** → `@layer` definieren, Imports klar ordnen. ([MDN Web Docs][6])
 * **Variablen nicht gefunden** → `@use "… as *"` nur gezielt; sonst namespacen (`mixins.function()` etc.). ([sass-lang.com][2])
+
+
+
+ich habe gerade gemerkt, dass #file:donate.md nicht wirklich funktioniert und dass dort auch keine daten hinterlegt sind. 
+
+bitte mache die #file:donate.html mit folgenden daten:
+
+**Spendenkonto Volksbank:**  
+Hand in Hand e.V.  
+Vereinigte Volksbank eG  
+IBAN: DE30 5909 2000 8073 7500 09  
+BIC: GENODE51SB2
+
+**Spendenkonto Sparkasse:**  
+Ingos kleine Kältehilfe - Hand in Hand e.V.  
+Sparkasse Saarbrücken  
+IBAN: DE11 5905 0101 0067 0935 59  
+BIC: SAKSDE55XXX
