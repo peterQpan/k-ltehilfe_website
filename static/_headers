@@ -19,4 +19,4 @@
 
 # Spezielle Behandlung für HTML-Seiten
 /*.html
-  Cache-Control: public, max-age=3600
+  Cache-Control: max-age=0, must-revalidate
