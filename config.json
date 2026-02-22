@@ -1,0 +1,10 @@
+{
+  "planets": {
+    "Erde": {
+      "buildings": {
+        "Metallmine": {"level": 1, "auto": true},
+        "Kristallmine": {"level": 1, "auto": true}
+      }
+    }
+  }
+}

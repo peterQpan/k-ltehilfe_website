@@ -1,0 +1,1 @@
+"""Modularer OGame Build-Clicker."""
