@@ -23,6 +23,7 @@ disablePathToLower = false
   keywords = "Kältehilfe Saarbrücken, Obdachlosenhilfe, Ehrenamt, Spenden, soziale Projekte, Lafontaine, Lafontaine Saarbrücken, Ingos Kältehilfe, Spenden für Bedürftige, Hilfe für Obdachlose, Menschen in Not, Ehrenamtliche Unterstützung, Soziale Projekte Saarbrücken, Kältehilfe Initiative, Unterstützung für Arme, Spendenaktionen, Hilfsorganisation, Menschenhilfe, Notfallhilfe, Winterhilfe, Obdachlosenunterstützung, Soziale Arbeit, Gemeinschaftshilfe, Spenden sammeln, Hilfe leisten, Menschen unterstützen, Bedürftige helfen, Ehrenamtliches Engagement, Soziale Verantwortung, Hilfsprojekte, Spendenkampagnen, Unterstützung für Schwache, Menschenrechte, Soziale Gerechtigkeit, Hilfe für Alle, Spenden für Kältehilfe, Obdachlosenhilfe Saarbrücken, Ehrenamtliche Helfer, Soziale Netzwerke, Hilfsangebote, Menschen in Bedrängnis, Notunterstützung, Winterunterstützung, Obdachlosenbetreuung, Soziale Dienste, Gemeinschaftsunterstützung, Spendenaufrufe, Hilfe für Bedürftige, Menschenhilfe Saarbrücken, Notfallunterstützung, Kältehilfe Projekte, Obdachlosenhilfe Initiative, Ehrenamtliche Arbeit, Soziale Projekte, Hilfsorganisationen, Spenden für Menschen, Hilfe für Menschen, Unterstützung für Menschen"
   author = "Ingos kleine Kältehilfe, Sebastian Müller, Hand in Hand .eV, Petra Therre, Lafontaine"
   bedarfs_liste = "https://www.facebook.com/permalink.php?story_fbid=pfbid02jt4ZcZYZrQDNeUqafLtni3KFu5BoGcYTbyAAGFTqpEDZnQYNEy4XLno9udRfUL4Bl&id=100064428263297"
+  newsletter_enabled = false
 
 # RSS/XML Feed Konfiguration
 [services]

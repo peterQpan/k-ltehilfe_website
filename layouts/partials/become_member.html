@@ -7,6 +7,11 @@
 
                 <form class="custom-form volunteer-form mb-5 mb-lg-0" action="/mail.php" method="post" role="form">
                     <h3 class="mb-4">Werde heute ehrenamtlich tätig</h3>
+                    <input type="hidden" name="volunteer-form-loaded-at" id="volunteer-form-loaded-at" value="">
+                    <div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+                        <label for="volunteer-website">Website</label>
+                        <input type="text" name="volunteer-website" id="volunteer-website" tabindex="-1" autocomplete="off">
+                    </div>
                     <div class="row">
                         <div class="col-12">
                             <input type="text" name="volunteer-name" id="volunteer-name" class="form-control mb-3" placeholder="Max Mustermann" required>
@@ -28,6 +33,7 @@
                     </div>
                 </div>
                 <script>
+                document.getElementById('volunteer-form-loaded-at').value = String(Math.floor(Date.now() / 1000));
                 document.querySelector('.volunteer-form').addEventListener('submit', function(e) {
                     e.preventDefault();
                     const form = e.target;
