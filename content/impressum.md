@@ -19,19 +19,20 @@ Telefon: 0174 9117841
 
 Email: hand-in-hand@gmx.de
 
-**Vertretungsberechtigte:**
+**Vorstand:**
 
-Vorsitzende: Kerstin Lafontaine  
-Vorsitzende: Petra Therre
+- Vorsitzende: Petra Therre
+- Stellvertretende Vorsitzende: Katharina Aldieri
+- Kassenwartin: Susanne Schmelzer
+- Schriftführerin: Lisa Therre
+- Beisitzer: Anja Schneider, Andreas Klein, Julia Naumann
 
 
 Registergericht: Amtsgericht Saarbrücken
 
-Registernummer: [Hier fehlt die genaue VR-Nummer; ich konnte sie in öffentlichen Quellen nicht finden. Kannst du mir die mitteilen?]
-
 **Inhaltlich verantwortlich im Sinne des § 18 Abs. 2 MStV:**
 
-Kerstin Lafontaine
+Katharina Aldieri
 
 ## Spendenkonten
 
@@ -46,4 +47,3 @@ Ingos kleine Kältehilfe - Hand in Hand e.V.
 Sparkasse Saarbrücken  
 IBAN: DE11 5905 0101 0067 0935 59  
 BIC: SAKSDE55XXX
-

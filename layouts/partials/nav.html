@@ -8,25 +8,28 @@
         <small>Hand in Hand e.V.</small>
       </span>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link click-scroll" href="#top">Start</a></li>
-        <li class="nav-item"><a class="nav-link click-scroll" href="#section_2">Über uns</a></li>
-        <li class="nav-item"><a class="nav-link click-scroll" href="#section_3">Projekte</a></li>
-        <li class="nav-item"><a class="nav-link click-scroll" href="#section_4">Mithelfen</a></li>
+        <li class="nav-item"><a class="nav-link click-scroll" href="{{ if .IsHome }}#section_1{{ else }}{{ .Site.Home.RelPermalink }}#section_1{{ end }}">Start</a></li>
+        <li class="nav-item"><a class="nav-link click-scroll" href="{{ if .IsHome }}#section_2{{ else }}{{ .Site.Home.RelPermalink }}#section_2{{ end }}">Über uns</a></li>
+        <li class="nav-item"><a class="nav-link click-scroll" href="{{ if .IsHome }}#section_3{{ else }}{{ .Site.Home.RelPermalink }}#section_3{{ end }}">Projekte</a></li>
+        <li class="nav-item"><a class="nav-link click-scroll" href="{{ if .IsHome }}#section_4{{ else }}{{ .Site.Home.RelPermalink }}#section_4{{ end }}">Mithelfen</a></li>
         <li class="nav-item dropdown">
-          <a class="nav-link click-scroll dropdown-toggle" href="#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Aktuelles</a>
+          <a class="nav-link click-scroll dropdown-toggle" href="{{ if .IsHome }}#section_5{{ else }}{{ .Site.Home.RelPermalink }}#section_5{{ end }}" id="navbarLightDropdownMenuLink"
+            role="button" data-bs-toggle="dropdown" aria-expanded="false">Aktuelles</a>
           <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-            <li><a class="dropdown-item" href="news.html">Alle Beiträge</a></li>
-            <li><a class="dropdown-item" href="news-detail.html">Beitrag</a></li>
+            <li><a class="dropdown-item" href="{{ "/aktuelles/" | relURL }}">Alle Beiträge</a></li>
+            <li><a class="dropdown-item" href="{{ "/aktuelles/bedarfs-liste-veroeffentlicht/" | relURL
+                }}">Bedarfsliste</a></li>
           </ul>
         </li>
-        <li class="nav-item"><a class="nav-link click-scroll" href="#section_6">Kontakt</a></li>
-        <li class="nav-item"><a class="nav-link" href="/impressum/">Impressum</a></li>
-        <li class="nav-item ms-3"><a class="nav-link custom-btn custom-border-btn btn" href="/donate/">Spenden</a></li>
+        <li class="nav-item"><a class="nav-link click-scroll" href="{{ if .IsHome }}#section_6{{ else }}{{ .Site.Home.RelPermalink }}#section_6{{ end }}">Kontakt</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ "/impressum/" | relURL }}">Impressum</a></li>
+        <li class="nav-item ms-3"><a class="nav-link custom-btn custom-border-btn btn" href="{{ "/donate/" | relURL }}">Spenden</a></li>
       </ul>
     </div>
   </div>

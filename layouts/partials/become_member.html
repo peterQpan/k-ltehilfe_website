@@ -3,66 +3,83 @@
         <div class="row">
 
             <div class="col-lg-6 col-12">
-                    <h2 class="text-white mb-4">Mithelfen</h2>
+                <h2 class="text-white mb-4">Mithelfen</h2>
 
                 <form class="custom-form volunteer-form mb-5 mb-lg-0" action="/mail.php" method="post" role="form">
                     <h3 class="mb-4">Werde heute ehrenamtlich tätig</h3>
+                    <input type="hidden" name="volunteer-form-loaded-at" id="volunteer-form-loaded-at" value="">
+                    <div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;"
+                        aria-hidden="true">
+                        <label for="volunteer-website">Website</label>
+                        <input type="text" name="volunteer-website" id="volunteer-website" tabindex="-1"
+                            autocomplete="off">
+                    </div>
                     <div class="row">
                         <div class="col-12">
-                            <input type="text" name="volunteer-name" id="volunteer-name" class="form-control mb-3" placeholder="Max Mustermann" required>
+                            <input type="text" name="volunteer-name" id="volunteer-name" class="form-control mb-3"
+                                placeholder="Max Mustermann" required>
                         </div>
                         <div class="col-12">
-                            <input type="email" name="volunteer-email" id="volunteer-email" pattern="[^ @]*@[^ @]*" class="form-control mb-3" placeholder="max@example.de" required>
+                            <input type="email" name="volunteer-email" id="volunteer-email" pattern="[^ @]*@[^ @]*"
+                                class="form-control mb-3" placeholder="max@example.de" required>
                         </div>
                         <div class="col-12">
-                            <input type="text" name="volunteer-subject" id="volunteer-subject" class="form-control mb-3" placeholder="Betreff" value="Ich möchte mithelfen!" required>
+                            <input type="text" name="volunteer-subject" id="volunteer-subject" class="form-control mb-3"
+                                placeholder="Betreff" value="Ich möchte mithelfen!" required>
                         </div>
                     </div>
                     <button type="submit" class="form-control">Absenden</button>
                 </form>
-                <div id="volunteerOverlay" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(76,175,80,0.95);z-index:9999;align-items:center;justify-content:center;text-align:center;">
-                    <div style="margin:auto;padding:2em;background:#fff;border-radius:10px;max-width:400px;box-shadow:0 2px 8px rgba(0,0,0,0.2);color:#333;">
+                <div id="volunteerOverlay"
+                    style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(76,175,80,0.95);z-index:9999;align-items:center;justify-content:center;text-align:center;">
+                    <div
+                        style="margin:auto;padding:2em;background:#fff;border-radius:10px;max-width:400px;box-shadow:0 2px 8px rgba(0,0,0,0.2);color:#333;">
                         <h4 style="color:#4caf50;">Vielen Dank für dein Engagement!</h4>
                         <p>Wir melden uns so schnell wie möglich bei dir.</p>
-                        <button onclick="document.getElementById('volunteerOverlay').style.display='none'" class="form-control" style="background:#4caf50;color:#fff;">Schließen</button>
+                        <button onclick="document.getElementById('volunteerOverlay').style.display='none'"
+                            class="form-control" style="background:#4caf50;color:#fff;">Schließen</button>
                     </div>
                 </div>
                 <script>
-                document.querySelector('.volunteer-form').addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const form = e.target;
-                    const data = new FormData(form);
-                    fetch('/mail.php', {
-                        method: 'POST',
-                        body: data
-                    })
-                    .then(response => {
-                        if (!response.ok) throw new Error('Network response was not ok');
-                        return response.text();
-                    })
-                    .then(() => {
-                        document.getElementById('volunteerOverlay').style.display = 'flex';
-                        form.reset();
-                    })
-                    .catch(() => {
-                        alert('Fehler beim Senden. Bitte versuche es später erneut.');
+                    document.getElementById('volunteer-form-loaded-at').value = String(Math.floor(Date.now() / 1000));
+                    document.querySelector('.volunteer-form').addEventListener('submit', function (e) {
+                        e.preventDefault();
+                        const form = e.target;
+                        const data = new FormData(form);
+                        fetch(form.action, {
+                            method: 'POST',
+                            body: data
+                        })
+                            .then(response => {
+                                if (!response.ok) throw new Error('Network response was not ok');
+                                return response.text();
+                            })
+                            .then(() => {
+                                document.getElementById('volunteerOverlay').style.display = 'flex';
+                                form.reset();
+                            })
+                            .catch(() => {
+                                alert('Fehler beim Senden. Bitte versuche es später erneut.');
+                            });
                     });
-                });
                 </script>
             </div>
 
             <div class="col-lg-6 col-12">
                 <div class="logo-container d-flex justify-content-center mb-4">
-                    <div class="logo-wrapper rounded-circle bg-white shadow d-flex justify-content-center align-items-center" style="width: 370px; height: 370px;">
-                        <img src="images/logo.jpeg" class="volunteer-image img-fluid" alt="Logo von Ingos kleiner Kältehilfe" style="width: 280px; height: 280px; object-fit: cover;">
+                    <div class="logo-wrapper rounded-circle bg-white shadow d-flex justify-content-center align-items-center"
+                        style="width: 370px; height: 370px;">
+                        <img src="images/logo.jpeg" class="volunteer-image img-fluid"
+                            alt="Logo von Ingos kleiner Kältehilfe"
+                            style="width: 280px; height: 280px; object-fit: cover;">
                     </div>
                 </div>
 
-                    <div class="custom-block-body text-center">
-                        <h4 class="text-white mt-lg-3 mb-lg-3">Über das Ehrenamt</h4>
+                <div class="custom-block-body text-center">
+                    <h4 class="text-white mt-lg-3 mb-lg-3">Über das Ehrenamt</h4>
 
-                        <p class="text-white">Engagiere dich in unserem Team und unterstütze Menschen in Not.</p>
-                    </div>
+                    <p class="text-white">Engagiere dich in unserem Team und unterstütze Menschen in Not.</p>
+                </div>
             </div>
 
         </div>

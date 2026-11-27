@@ -3,7 +3,8 @@
     <div class="row">
       <div class="col-lg-3 col-12 mb-4">
         <div class="footer-logo-container">
-          <img src="/images/logo.jpeg" class="logo img-fluid" alt="Ingos kleine Kältehilfe" style="width: 90%; max-width: none; border-radius: 3rem;">
+          <img src="/images/logo.jpeg" class="logo img-fluid" alt="Ingos kleine Kältehilfe"
+            style="width: 90%; max-width: none; border-radius: 3rem;">
         </div>
 
         <!-- TODO: replace placeholder logo.svg with actual logo image -->
@@ -11,13 +12,16 @@
       <div class="col-lg-4 col-md-6 col-12 mb-4">
         <h5 class="site-footer-title mb-3">Schnellzugriff</h5>
         <ul class="footer-menu">
-          <li class="footer-menu-item"><a href="#section_2" class="footer-menu-link">Über uns</a></li>
-          <li class="footer-menu-item"><a href="news.html" class="footer-menu-link">Aktuelles</a></li>
-          <li class="footer-menu-item"><a href="#section_3" class="footer-menu-link">Projekte</a></li>
-          <li class="footer-menu-item"><a href="#section_4" class="footer-menu-link">Mithelfen</a></li>
-          <li class="footer-menu-item"><a href="/donate/" class="footer-menu-link">Spenden</a></li>
-          <li class="footer-menu-item"><a href="/impressum/" class="footer-menu-link">Impressum</a></li>
-          <li class="footer-menu-item"><a href="/datenschutz/" class="footer-menu-link">Datenschutz</a></li>
+          <li class="footer-menu-item"><a href="{{ if .IsHome }}#section_2{{ else }}{{ .Site.Home.RelPermalink }}#section_2{{ end }}" class="footer-menu-link">Über uns</a></li>
+          <li class="footer-menu-item"><a href="{{ "/aktuelles/" | relURL }}" class="footer-menu-link">Aktuelles</a>
+          </li>
+          <li class="footer-menu-item"><a href="{{ if .IsHome }}#section_3{{ else }}{{ .Site.Home.RelPermalink }}#section_3{{ end }}" class="footer-menu-link">Projekte</a></li>
+          <li class="footer-menu-item"><a href="{{ if .IsHome }}#section_4{{ else }}{{ .Site.Home.RelPermalink }}#section_4{{ end }}" class="footer-menu-link">Mithelfen</a></li>
+          <li class="footer-menu-item"><a href="{{ "/donate/" | relURL }}" class="footer-menu-link">Spenden</a></li>
+          <li class="footer-menu-item"><a href="{{ "/impressum/" | relURL }}" class="footer-menu-link">Impressum</a></li>
+          <li class="footer-menu-item"><a href="{{ "/datenschutz/" | relURL }}" class="footer-menu-link">Datenschutz</a></li>
+          <li class="footer-menu-item"><a href="{{ "/documents/Mitgliedsantrag-neu-ab-2017_k.pdf" | relURL }}"
+              class="footer-menu-link">Mitgliedsantrag</a></li>
         </ul>
       </div>
       <div class="col-lg-4 col-md-6 col-12 mx-auto">
@@ -35,7 +39,8 @@
             <i class="bi-geo-alt me-2"></i>
             Stengelstr. 30, 66117 Saarbrücken (Essensausgabe)
           </p>
-          <a href="https://www.google.com/maps?q=Stengelstr.+30,+66117+Saarbrücken" class="custom-btn btn mt-3" target="_blank">Anfahrt</a>
+          <a href="https://www.google.com/maps?q=Stengelstr.+30,+66117+Saarbrücken" class="custom-btn btn mt-3"
+            target="_blank">Anfahrt</a>
           <p class="text-white d-flex mb-0 mt-2">
             <i class="bi-geo-alt me-2"></i>
             Pastor-Hein-Str. 4 66280 Sulzbach (Postadresse)
@@ -48,18 +53,28 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-md-7 col-12">
-          <p class="copyright-text mb-0">Copyright © 2025 Sebastian Müller für Kältehilfe · <a href="/impressum/" class="site-footer-link">Impressum</a> · <a href="/datenschutz/" class="site-footer-link">Datenschutz</a></p>
+          <p class="copyright-text mb-0">Copyright © 2025 Sebastian Müller für Kältehilfe · <a href="{{ "/impressum/" | relURL }}"
+              class="site-footer-link">Impressum</a> · <a href="{{ "/datenschutz/" | relURL }}" class="site-footer-link">Datenschutz</a>
+          </p>
         </div>
         <div class="col-lg-6 col-md-5 col-12 d-flex justify-content-center align-items-center mx-auto">
           <ul class="social-icon">
-            <li class="social-icon-item"><a href="https://www.facebook.com/p/Ingos-kleine-K%C3%A4ltehilfe-100064428263297/" class="social-icon-link bi-facebook" title="Folge uns auf Facebook"></a></li>
-            <li class="social-icon-item"><a href="https://www.instagram.com/ingoskleinekaeltehilfe/" class="social-icon-link bi-instagram" title="Folge uns auf Instagram"></a></li>
+            <li class="social-icon-item"><a
+                href="https://www.facebook.com/p/Ingos-kleine-K%C3%A4ltehilfe-100064428263297/"
+                class="social-icon-link bi-facebook" title="Folge uns auf Facebook"></a></li>
+            <li class="social-icon-item"><a href="https://www.instagram.com/ingoskleinekaeltehilfe/"
+                class="social-icon-link bi-instagram" title="Folge uns auf Instagram"></a></li>
           </ul>
           <div class="share-buttons ms-3">
             <span class="text-white me-2">Teilen:</span>
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink | urlquery }}" target="_blank" class="btn btn-sm btn-outline-light me-1" title="Auf Facebook teilen"><i class="bi bi-facebook"></i></a>
-            <a href="https://twitter.com/intent/tweet?url={{ .Permalink | urlquery }}&text={{ .Title | urlquery }} - Ingos kleine Kältehilfe" target="_blank" class="btn btn-sm btn-outline-light me-1" title="Auf Twitter teilen"><i class="bi bi-twitter"></i></a>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink | urlquery }}&title={{ .Title | urlquery }}" target="_blank" class="btn btn-sm btn-outline-light" title="Auf LinkedIn teilen"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink | urlquery }}" target="_blank"
+              class="btn btn-sm btn-outline-light me-1" title="Auf Facebook teilen"><i class="bi bi-facebook"></i></a>
+            <a href="https://twitter.com/intent/tweet?url={{ .Permalink | urlquery }}&text={{ .Title | urlquery }} - Ingos kleine Kältehilfe"
+              target="_blank" class="btn btn-sm btn-outline-light me-1" title="Auf Twitter teilen"><i
+                class="bi bi-twitter"></i></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink | urlquery }}&title={{ .Title | urlquery }}"
+              target="_blank" class="btn btn-sm btn-outline-light" title="Auf LinkedIn teilen"><i
+                class="bi bi-linkedin"></i></a>
           </div>
         </div>
       </div>

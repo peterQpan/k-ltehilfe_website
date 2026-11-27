@@ -1,0 +1,51 @@
+<section class="section-padding" style="background-color: var(--secondary-color);" id="video_section">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-lg-12 col-12 mb-5 mb-lg-0" style="padding-top: 2rem;">
+        <div class="video-card" style="position: relative; z-index: 10;">
+          <header class="video-card__head">
+            <h2 class="video-card__title">Die Kältehilfe in 2 Minuten</h2>
+            <h3 class="video-card__subtitle">Verein des Monats</h3>
+          </header>
+
+          <div class="video-embed">
+            <iframe
+              src="https://player.vimeo.com/video/929791144?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+              frameborder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Watt für deinen Verein 2023 - Ingos kleine Kältehilfe"></iframe>
+          </div>
+
+          <p class="video-card__caption" style="margin-bottom: 0.5rem;">Unser Vorstellungsvideo für den Verein des Jahres</p>
+        </div>
+        <script src="https://player.vimeo.com/api/player.js"></script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.video-card{
+  background:#fff; border-radius:20px; padding:2rem; overflow:hidden;
+}
+.video-card__head{ margin:0 auto 1.8rem; max-width:70%; text-align:left; }
+.video-card__title{ color:var(--secondary-color); margin:0; }
+.video-card__subtitle{ color:var(--primary-color); margin:.25rem 0 0; }
+
+/* WICHTIG: harter Clip für runde Ecken am Video selbst */
+.video-embed{
+  position:relative; aspect-ratio:16/9; max-width:70%; margin:0 auto;
+  border-radius:12px; 
+  clip-path: inset(0 round 12px);
+  background:#000; /* falls Letterboxing – verhindert weiße Ecken */
+}
+.video-embed iframe{
+  position:absolute; inset:0; width:100%; height:100%; border:0; display:block;
+}
+
+.video-card__caption{ text-align:center; margin-top:.75rem; color:#000; }
+@media (max-width: 992px){
+  .video-card__head, .video-embed{ max-width:100%; }
+}
+</style>

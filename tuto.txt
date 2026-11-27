@@ -1,0 +1,153 @@
+# Warum SCSS bei Hugo oft „Layouts bricht“
+
+* **Reihenfolge & Kaskade**: Andere Import-Reihenfolge ⇒ andere Spezifität. Moderne Werkzeuge wie **Cascade Layers** helfen, die Reihenfolge explizit zu steuern. ([MDN Web Docs][1])
+* **@use/@forward statt @import**: `@use` namespacet Variablen/Mixins und hat strikte Reihenfolgenregeln. Falsche Umstellung ⇒ Variablen nicht gefunden oder überschrieben. ([sass-lang.com][2])
+* **Hugo Build-Pipeline**: Falscher Asset-Pfad, nicht-extended Hugo, oder falsche Pipes-Kombinationen führen zu fehlenden/anders zusammengeführten Styles. ([gohugo.io][3])
+* **Architektur fehlt**: Eine große Datei ohne Methodik (BEM/ITCSS) macht Refactor riskant. ([en.bem.info][4])
+
+# Best Practices (kurz & praxisnah)
+
+* Utility-First schrittweise einführen: Tailwind nur für neue Komponenten.
+
+## 1) Architektur wählen (und klein anfangen)
+
+* **ITCSS** als Ordner-/Layer-Gerüst; **BEM** als Benennung. Du kannst das schrittweise einführen. ([xfive.co][5])
+
+```
+assets/scss/
+  0-settings/_colors.scss
+  1-tools/_mixins.scss
+  2-generic/_normalize.scss
+  3-elements/_typography.scss
+  4-objects/_layout.scss
+  5-components/_buttons.scss
+  6-utilities/_spacing.scss
+  main.scss
+```
+
+## 2) `@use`/`@forward` korrekt einsetzen (kein `@import`)
+
+* Eine **zentrale Entry-Datei** nutzt klar definierte Module. ([sass-lang.com][2])
+
+```scss
+/* assets/scss/main.scss */
+@layer settings, tools, generic, elements, objects, components, utilities;
+
+/* Reihenfolge steuert Kaskade, nicht Spezifitätstricks */
+@layer settings   { @use "0-settings/colors" as *; }
+@layer tools      { @use "1-tools/mixins" as mixins; }
+@layer generic    { @use "2-generic/normalize" as *; }
+@layer elements   { @use "3-elements/typography" as *; }
+@layer objects    { @use "4-objects/layout" as *; }
+@layer components { @use "5-components/buttons" as *; }
+@layer utilities  { @use "6-utilities/spacing" as *; }
+```
+
+> `@layer` (CSS, nicht Sass) fixiert die Priorität deiner Schichten—besonders hilfreich bei schrittweiser Migration. ([MDN Web Docs][6])
+
+## 3) Hugo Pipes stabil nutzen
+
+* **Hugo Extended** nötig für SCSS; nutze Pipes für Sourcemaps/Minify/Fingerprints. ([gohugo.io][7])
+
+```go-html-template
+{{/* layouts/partials/styles.html */}}
+{{ $opts := dict "targetPath" "css/main.css" "enableSourceMap" (ne hugo.IsProduction true) }}
+{{ $scss := resources.Get "scss/main.scss" | resources.ToCSS $opts }}
+{{ $css  := cond hugo.IsProduction ($scss | minify | fingerprint) $scss }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ with $css.Data.Integrity }}{{.}}{{ end }}">
+```
+
+```go-html-template
+{{/* in baseof.html */}}
+{{ partial "styles.html" . }}
+```
+
+* Optional **PostCSS/Autoprefixer** via Hugo integrieren (ohne externes Build-Tool). ([gohugo.io][8])
+
+```bash
+# postcss.config.js (Projektwurzel)
+module.exports = { plugins: { autoprefixer: {} } }
+```
+
+```go-html-template
+{{ $scss := resources.Get "scss/main.scss" | toCSS (dict "enableSourceMap" true) | postCSS }}
+```
+
+## 4) Spezifität & Regressionen vermeiden
+
+* Verwende **BEM**-Klassen (`.btn`, `.btn--primary`, `.btn__icon`) und setze „Resets/Normalisierung“ ganz früh in eine eigene Schicht. ([en.bem.info][9])
+* Nutze `:where()` für niedrig-spezifische Utilities (leichter zu überschreiben). ([MDN Web Docs][1])
+* Halte Breakpoints/Spacings als **Settings-Variablen**; nie hart in Komponenten. (Siehe Sass Guidelines.) ([sass-guidelin.es][10])
+
+## 5) Migrationsstrategie ohne Layout-Bruch
+
+1. **Snapshot**: Bestehende `main.css` unverändert einbinden, **parallel** eine `main.scss` erstellen.
+2. **1:1-Port**: Teile aus `main.css` unverändert in `main.scss` kopieren (ohne Umbau), bis Output identisch ist (Diff prüfen).
+3. **Schrittweise modularisieren**: Blöcke nacheinander in passende Layer/Partials verschieben; **keine Selektoränderungen**.
+4. **Spezifität schützen**: Kritische alte Regeln in eine `@layer legacy` ans Ende; später abbauen.
+5. **Tests**: Dev-Build mit Sourcemaps, visuelle Regression (Percy/Chromatic/Playwright) oder Screenshots vergleichen.
+   (Pipes + Layers + @use Regeln aus den offiziellen Docs/MDN stützen dieses Vorgehen.) ([gohugo.io][3])
+
+---
+
+# Mini-Beispiel: Von monolithisch zu modular (Hugo + SCSS)
+
+```scss
+/* assets/scss/0-settings/_colors.scss */
+$brand: #4f46e5;
+$gray-700: #374151;
+$space-2: .5rem;
+$space-4: 1rem;
+```
+
+```scss
+/* assets/scss/5-components/_buttons.scss */
+.btn { padding: $space-2 $space-4; border-radius: .375rem; }
+.btn--primary { background: $brand; color: white; }
+```
+
+```scss
+/* assets/scss/6-utilities/_spacing.scss */
+:where(.mt-2){ margin-top: $space-2; }
+:where(.mt-4){ margin-top: $space-4; }
+```
+
+```scss
+/* assets/scss/main.scss */
+@layer settings, components, utilities;
+@layer settings   { @use "0-settings/colors" as *; }
+@layer components { @use "5-components/buttons" as *; }
+@layer utilities  { @use "6-utilities/spacing" as *; }
+```
+
+```html
+<!-- Beispiel HTML -->
+<button class="btn btn--primary mt-4">Kaufen</button>
+```
+
+---
+
+# Häufige Stolpersteine (und Fixes)
+
+* **„not extended“ Fehler** → Hugo Extended installieren/verwenden. ([HUGO][11])
+* **Falsche Pfade** (`static/` vs `assets/`) → SCSS gehört in `assets/`, nicht `static/`. ([gohugo.io][3])
+* **Zerlegte Reihenfolge** → `@layer` definieren, Imports klar ordnen. ([MDN Web Docs][6])
+* **Variablen nicht gefunden** → `@use "… as *"` nur gezielt; sonst namespacen (`mixins.function()` etc.). ([sass-lang.com][2])
+
+
+
+ich habe gerade gemerkt, dass #file:donate.md nicht wirklich funktioniert und dass dort auch keine daten hinterlegt sind. 
+
+bitte mache die #file:donate.html mit folgenden daten:
+
+**Spendenkonto Volksbank:**  
+Hand in Hand e.V.  
+Vereinigte Volksbank eG  
+IBAN: DE30 5909 2000 8073 7500 09  
+BIC: GENODE51SB2
+
+**Spendenkonto Sparkasse:**  
+Ingos kleine Kältehilfe - Hand in Hand e.V.  
+Sparkasse Saarbrücken  
+IBAN: DE11 5905 0101 0067 0935 59  
+BIC: SAKSDE55XXX

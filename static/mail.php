@@ -8,6 +8,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', '0');
 
 $isJsonRequest = strpos($_SERVER['HTTP_ACCEPT'] ?? '', 'application/json') !== false;
+
 function send_response_s(bool $ok, string $msg, int $code = 200): void
 {
     global $isJsonRequest;
@@ -31,6 +32,92 @@ function write_log_s(string $m): void
     @file_put_contents($f, date('Y-m-d H:i:s') . ' ' . ($_SERVER['REMOTE_ADDR'] ?? '') . ' ' . $m . PHP_EOL, FILE_APPEND | LOCK_EX);
 }
 
+function normalize_origin_s(string $value): string
+{
+    $parts = parse_url(trim($value));
+    if ($parts === false || empty($parts['scheme']) || empty($parts['host'])) {
+        return '';
+    }
+
+    $origin = strtolower($parts['scheme']) . '://' . strtolower($parts['host']);
+    if (!empty($parts['port'])) {
+        $origin .= ':' . (int)$parts['port'];
+    }
+
+    return $origin;
+}
+
+function get_default_origin_s(): string
+{
+    $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+    $host = trim($_SERVER['HTTP_HOST'] ?? '');
+    if ($host === '') {
+        return '';
+    }
+
+    return normalize_origin_s($scheme . '://' . $host);
+}
+
+function get_allowed_origins_s(string $configuredOrigins): array
+{
+    $origins = [];
+    foreach (explode(',', $configuredOrigins) as $origin) {
+        $normalized = normalize_origin_s($origin);
+        if ($normalized !== '') {
+            $origins[$normalized] = true;
+        }
+    }
+
+    $defaultOrigin = get_default_origin_s();
+    if ($defaultOrigin !== '') {
+        $origins[$defaultOrigin] = true;
+    }
+
+    return array_keys($origins);
+}
+
+function get_request_origin_s(): string
+{
+    $origin = normalize_origin_s($_SERVER['HTTP_ORIGIN'] ?? '');
+    if ($origin !== '') {
+        return $origin;
+    }
+
+    return normalize_origin_s($_SERVER['HTTP_REFERER'] ?? '');
+}
+
+function resolve_autoload_s(): string
+{
+    $path = dirname(__DIR__) . '/vendor/autoload.php';
+    return is_readable($path) ? $path : '';
+}
+
+function is_valid_name_s(string $value): bool
+{
+    if ($value === '' || mb_strlen($value) < 2 || mb_strlen($value) > 80) {
+        return false;
+    }
+
+    if (!preg_match("/^[\p{L}][\p{L}\p{M}\s.'-]+$/u", $value)) {
+        return false;
+    }
+
+    return preg_match_all('/\p{L}/u', $value) >= 2;
+}
+
+function is_valid_form_age_s(string $value, int $minimumAgeSeconds = 3, int $maximumAgeSeconds = 86400): bool
+{
+    if ($value === '' || !ctype_digit($value)) {
+        return false;
+    }
+
+    $submittedAt = (int)$value;
+    $now = time();
+    $age = $now - $submittedAt;
+
+    return $age >= $minimumAgeSeconds && $age <= $maximumAgeSeconds;
+}
+
 // fixed .env path
 function load_env_server(): array
 {
@@ -49,15 +136,10 @@ function load_env_server(): array
 
 $env = load_env_server();
 write_log_s('env loaded: ' . (empty($env) ? 'no' : 'yes'));
-write_log_s('DEBUG_MODE: ' . ($env['DEBUG_MODE'] ?? 'not set'));
-write_log_s('RATE_LIMIT_MINUTES: ' . ($env['RATE_LIMIT_MINUTES'] ?? 'not set'));
-write_log_s('SMTP_PORT: ' . ($env['SMTP_PORT'] ?? 'not set'));
-write_log_s('SMTP_USERNAME set: ' . (!empty($env['SMTP_USERNAME']) ? 'yes' : 'no'));
-write_log_s('SMTP_PASSWORD set: ' . (!empty($env['SMTP_PASSWORD']) ? 'yes' : 'no'));
 
-// fixed autoload location under public/vendor
-$autoload = __DIR__ . '/../public/vendor/autoload.php';
-if (!file_exists($autoload)) {
+// Resolve Composer autoload robustly for both source and deployed locations.
+$autoload = resolve_autoload_s();
+if ($autoload === '') {
     write_log_s('ERROR: autoload not found at ' . $autoload);
     send_response_s(false, 'Serverfehler: PHPMailer nicht verfügbar', 500);
 }
@@ -85,6 +167,13 @@ if (empty($config['smtp_host']) || empty($config['smtp_user']) || empty($config[
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') { write_log_s('METHOD not allowed'); send_response_s(false, 'Nur POST erlaubt', 405); }
+
+$allowedOrigins = get_allowed_origins_s($config['allowed_origin']);
+$requestOrigin = get_request_origin_s();
+if ($requestOrigin === '' || !in_array($requestOrigin, $allowedOrigins, true)) {
+    write_log_s('ORIGIN denied: ' . ($requestOrigin !== '' ? $requestOrigin : 'missing'));
+    send_response_s(false, 'Anfrage nicht erlaubt', 403);
+}
 
 // rate limiting
 function check_rate_limit_server(string $ip, int $minutes, int $max): bool
@@ -117,10 +206,16 @@ $replyTo = '';
 if (!empty($_POST['volunteer-name']) || !empty($_POST['volunteer-email'])) {
     $name = clean_server($_POST['volunteer-name'] ?? '');
     $email = clean_server($_POST['volunteer-email'] ?? '');
-    $subject = clean_server($_POST['volunteer-subject'] ?? 'Mithelfen');
+    $honeypot = clean_server($_POST['volunteer-website'] ?? '', 255);
+    $loadedAt = clean_server($_POST['volunteer-form-loaded-at'] ?? '', 32);
+    if ($honeypot !== '') { write_log_s('Volunteer honeypot hit'); send_response_s(false, 'Ungültige Anfrage', 400); }
+    if (!is_valid_form_age_s($loadedAt)) { write_log_s('Volunteer form age invalid'); send_response_s(false, 'Ungültige Anfrage', 400); }
+    if (!is_valid_name_s($name)) { write_log_s('Volunteer name invalid'); send_response_s(false, 'Bitte gib einen gültigen Namen an', 400); }
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { write_log_s('Volunteer email invalid'); send_response_s(false, 'Bitte gib eine gültige E-Mail-Adresse an', 400); }
+    $subject = 'Ich möchte mithelfen!';
     $body = "Mithelfen-Anfrage\n\n";
     $body .= "Name: $name\nE-Mail: $email\nBetreff: $subject\n";
-    $replyTo = filter_var($email, FILTER_VALIDATE_EMAIL) ? $email : '';
+    $replyTo = $email;
 } elseif (!empty($_POST['first-name']) || !empty($_POST['message'])) {
     $name = clean_server($_POST['first-name'] ?? '');
     $email = clean_server($_POST['email'] ?? '');
@@ -141,12 +236,8 @@ $body .= "\nIP: $ip\nReferer: " . ($_SERVER['HTTP_REFERER'] ?? '') . "\n";
 
 $mail = new PHPMailer(true);
 try {
-    $mail->SMTPDebug = 2; // Detaillierte Debug-Ausgabe
-    $mail->Debugoutput = function($str, $level) {
-        write_log_s("SMTP DEBUG [$level]: $str");
-    };
+    $mail->SMTPDebug = 0;
     $mail->isSMTP();
-    $mail->Host = gethostbyname($config['smtp_host']); // IPv4 erzwingen
     $mail->Host = $config['smtp_host'];
     $mail->SMTPAuth = true;
     $mail->Username = $config['smtp_user'];
