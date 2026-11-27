@@ -18,6 +18,7 @@ if [[ -L public ]]; then
 fi
 check_public
 hugo --minify
+python3 scripts/check_member_form.py
 check_public
 for script in mail.php instagram.php image_proxy.php; do
     if [[ ! -f "public/$script" || -L "public/$script" ]]; then
