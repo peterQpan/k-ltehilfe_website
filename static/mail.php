@@ -88,19 +88,8 @@ function get_request_origin_s(): string
 
 function resolve_autoload_s(): string
 {
-    $candidates = [
-        __DIR__ . '/vendor/autoload.php',
-        __DIR__ . '/../vendor/autoload.php',
-        __DIR__ . '/../public/vendor/autoload.php',
-    ];
-
-    foreach ($candidates as $candidate) {
-        if (is_readable($candidate)) {
-            return $candidate;
-        }
-    }
-
-    return '';
+    $path = dirname(__DIR__) . '/vendor/autoload.php';
+    return is_readable($path) ? $path : '';
 }
 
 function is_valid_name_s(string $value): bool
