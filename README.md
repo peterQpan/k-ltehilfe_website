@@ -12,7 +12,7 @@
 
 ## Wofür wir da sind
 
-In Saarbrücken unterstützt Ingos kleine Kältehilfe obdachlose Menschen und andere Menschen in Not. Dazu gehören warme Mahlzeiten ein bisschen Zeit fürGespräche. Auf unserer Website erzählen wir von der Arbeit vor Ort und zeigen, wie du sie unterstützen kannst.
+In Saarbrücken unterstützt Ingos kleine Kältehilfe obdachlose Menschen und andere Menschen in Not. Dazu gehören warme Mahlzeiten ein bisschen Zeit für Gespräche. Auf unserer Website erzählen wir von der Arbeit vor Ort und zeigen, wie du sie unterstützen kannst.
 
 ## An der Website mitarbeiten
 
