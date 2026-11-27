@@ -47,3 +47,7 @@ Ingos kleine Kältehilfe - Hand in Hand e.V.
 Sparkasse Saarbrücken  
 IBAN: DE11 5905 0101 0067 0935 59  
 BIC: SAKSDE55XXX
+
+## Urheberrecht und Lizenz
+
+Die von Sebastian Müller für Kältehilfe erstellten Texte, Bilder und grafischen Gestaltungselemente dieser Website stehen unter der Lizenz [Creative Commons Namensnennung 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/deed.de).
