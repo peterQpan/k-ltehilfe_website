@@ -46,7 +46,7 @@
                         e.preventDefault();
                         const form = e.target;
                         const data = new FormData(form);
-                        fetch('/mail.php', {
+                        fetch(form.action, {
                             method: 'POST',
                             body: data
                         })
